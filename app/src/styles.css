@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined');
 @import 'tailwindcss';
 
 @font-face {
@@ -30,6 +31,7 @@
 
 @theme {
   --font-caixa: CaixaSTD, sans-serif;
+  --color-white: #ffffff;
   --color-primary: #005ca9;
   --color-primary-light: #2d8ad8;
   --color-secondary: #a65e00;
@@ -44,6 +46,7 @@ body,
 main {
   height: 100%;
   background-color: var(--color-background);
+  color: var(--color-white);
 }
 body {
   margin: 0;

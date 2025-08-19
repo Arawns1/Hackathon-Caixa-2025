@@ -3,6 +3,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-simulacao',
@@ -10,4 +11,10 @@ import { ButtonComponent } from '../../shared/button/button.component';
   templateUrl: './simulacao.component.html',
   styleUrl: './simulacao.component.css',
 })
-export class SimulacaoComponent {}
+export class SimulacaoComponent {
+  constructor(private router: Router) {}
+
+  irParaResumoSimulacao() {
+    this.router.navigate(['/resumo-simulacao']); // rota desejada
+  }
+}
