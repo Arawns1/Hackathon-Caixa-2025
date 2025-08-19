@@ -1,27 +1,35 @@
-<div class="px-5 flex flex-col h-full">
-  <h2 class="text-white font-caixa font-semibold text-2xl mt-6 mb-4">Simule seu empréstimo</h2>
+<div class="px-5 flex flex-col h-full" *ngIf="produtoContext.produtoSelecionado() as produto">
+  <h2 class="text-white font-caixa font-semibold text-2xl mt-6 mb-4">
+    Simule seu {{ produto.nome }}
+  </h2>
 
-  <div class="flex flex-col flex-1 justify-between">
+  <form class="flex flex-col flex-1 justify-between" [formGroup]="form" (ngSubmit)="submit()">
     <div class="text-white flex flex-col gap-8 mt-6">
       <div class="flex flex-col gap-2">
         <span class="font-normal">De quanto você precisa?</span>
         <input
           class="font-caixa h-12 border-b-2 border-border focus:border-primary focus:outline-none w-full text-primary font-semibold text-xl"
-          value="R$ 10.000,00"
+          type="text"
+          mask="separator.2"
+          prefix="R$ "
+          thousandSeparator="."
+          decimalMarker=","
+          [dropSpecialCharacters]="true"
+          formControlName="valor_solicitado"
         />
       </div>
 
       <div class="flex flex-col gap-2">
         <span class="font-normal">Em quantas vezes quer pagar?</span>
-        <select class="bg-card h-12 px-3 rounded overflow-hidden">
+        <select class="bg-card h-12 px-3 rounded overflow-hidden" formControlName="prazo">
           <option value="" disabled selected>Número de parcelas</option>
-          <option value="1">1 parcela</option>
-          <option value="2">2 parcelas</option>
-          <option value="3">3 parcelas</option>
+          <option *ngFor="let n of parcelas" [value]="n">
+            {{ n }} parcela{{ n > 1 ? 's' : '' }}
+          </option>
         </select>
       </div>
     </div>
 
-    <app-button [label]="'Próximo'" classes="w-full" (click)="irParaResumoSimulacao()" />
-  </div>
+    <app-button [label]="'Próximo'" classes="w-full" type="submit" />
+  </form>
 </div>

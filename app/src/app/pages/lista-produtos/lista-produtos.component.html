@@ -1,13 +1,14 @@
-<div class="px-5 flex flex-col gap-8 mt-6">
+<div class="px-5 flex flex-col gap-8 mt-6 pb-12">
   <a routerLink="/produtos/cadastro" class="font-light text-primary-light underline"> Cadastro </a>
   <h2 class="text-white font-caixa font-semibold text-2xl">
     Faça um empréstimo que combina com sua necessidade
   </h2>
 
   <div class="flex flex-col gap-6">
-    <app-card-produto></app-card-produto>
-    <app-card-produto></app-card-produto>
-    <app-card-produto></app-card-produto>
-    <app-card-produto></app-card-produto>
+    <app-card-produto
+      *ngFor="let produto of produtos"
+      [produto]="produto"
+      (onProdutoSelecionado)="handleProdutoSelecionado($event)"
+    ></app-card-produto>
   </div>
 </div>

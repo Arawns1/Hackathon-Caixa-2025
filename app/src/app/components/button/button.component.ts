@@ -10,4 +10,5 @@ import { Component, Input } from '@angular/core';
 export class ButtonComponent {
   @Input({ required: true }) label = '';
   @Input() classes = '';
+  @Input() type: 'button' | 'submit' | 'reset' = 'button';
 }

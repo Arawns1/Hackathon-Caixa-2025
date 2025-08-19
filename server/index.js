@@ -41,7 +41,7 @@ app.post("/produtos", (req, res) => {
 });
 
 // Realizar simulações
-app.post("/simulacoes", (req, res) => {
+app.post("/simulacoes", (req, res, next) => {
   const { id_produto, valor_solicitado, prazo } = req.body;
 
   if (!id_produto || valor_solicitado == null || prazo == null) {
@@ -92,18 +92,19 @@ app.post("/simulacoes", (req, res) => {
       saldo_devedor: Number(saldo_devedor.toFixed(2)),
     });
   }
-
-  return res.status(200).json({
-    produto,
-    resultado_simulacao: {
-      valor_solicitado,
-      prazo,
-      taxa_efetiva_mensal: Number(taxa_efetiva_mensal.toFixed(6)),
-      parcela_mensal: Number(parcela_mensal.toFixed(2)),
-      valor_total_com_juros: Number(valor_total_com_juros.toFixed(2)),
-      parcelas,
-    },
-  });
+  setTimeout(() => {
+    res.status(200).json({
+      produto,
+      resultado_simulacao: {
+        valor_solicitado,
+        prazo,
+        taxa_efetiva_mensal: Number(taxa_efetiva_mensal.toFixed(6)),
+        parcela_mensal: Number(parcela_mensal.toFixed(2)),
+        valor_total_com_juros: Number(valor_total_com_juros.toFixed(2)),
+        parcelas,
+      },
+    });
+  }, 2000);
 });
 
 app.listen(port, () => {

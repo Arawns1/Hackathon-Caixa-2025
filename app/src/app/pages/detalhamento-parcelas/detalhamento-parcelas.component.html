@@ -7,20 +7,11 @@
       >Resumo das parcelas iniciando no próximo mês</span
     >
   </div>
-  <div class="flex flex-col flex-1 justify-between pb-14">
-    <app-parcela-item />
-    <app-parcela-item />
-    <app-parcela-item />
-    <app-parcela-item />
-    <app-parcela-item />
-    <app-parcela-item />
-    <app-parcela-item />
-    <app-parcela-item />
-    <app-parcela-item />
-    <app-parcela-item />
-    <app-parcela-item />
-    <app-parcela-item />
-    <app-parcela-item />
-    <app-parcela-item />
+  <div class="flex flex-col flex-1 justify-start pb-14">
+    <app-parcela-item
+      *ngFor="let parcela of parcelas; let i = index"
+      [parcela]="parcela"
+      [numeroParcela]="i"
+    />
   </div>
 </div>

@@ -1,3 +1,7 @@
-<button class="bg-secondary font-semibold p-3 rounded mt-2 text-white" [ngClass]="classes">
+<button
+  [type]="type"
+  class="bg-secondary font-semibold p-3 rounded mt-2 text-white active:bg-secondary/50 active:text-white/50"
+  [ngClass]="classes"
+>
   {{ label }}
 </button>

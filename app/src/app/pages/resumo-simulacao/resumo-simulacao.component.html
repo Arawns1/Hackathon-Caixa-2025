@@ -1,81 +1,103 @@
-<div class="px-5 flex flex-col gap-8 h-full">
-  <div class="flex flex-col w-full gap-3">
-    <h2 class="font-caixa font-semibold text-2xl mt-4 m-0 p-0">
-      Resuma da simulação do empréstimo no valor de:
-    </h2>
-    <span class="font-caixa font-semibold text-2xl text-primary leading-none">R$ 10.000,00</span>
-  </div>
-  <div class="flex flex-col flex-1 justify-between">
-    <div class="flex flex-col flex-1 gap-8 justify-start items-start">
-      <div id="resumo-simulacao" class="w-full flex flex-col gap-6">
-        <div id="total-em-parcelas" class="w-full flex flex-row justify-between items-start">
-          <span>Você pagará</span>
-          <div class="flex flex-col items-end">
-            <span class="font-semibold">12x R$931,50</span>
-            <a
-              routerLink="/simulacao/detalhamento-parcelas"
-              class="font-light text-primary-light underline"
-            >
-              Ver parcelas detalhadas
-            </a>
-          </div>
-        </div>
-
-        <div id="taxa-efetiva-mensal" class="w-full flex flex-row justify-between items-start">
-          <span>Taxa efetiva</span>
-          <div class="flex flex-col items-end">
-            <span class="font-semibold">1,39%</span>
-            <span class="font-light">ao mês</span>
-          </div>
-        </div>
-
-        <app-divider />
-
-        <div id="total-a-pagar" class="w-full flex flex-row justify-between items-start">
-          <span>Total a Pagar</span>
-          <div class="flex flex-col items-end">
-            <span class="font-semibold">R$11.178,00</span>
-          </div>
-        </div>
-      </div>
-
-      <div id="infos-adicionais" class="flex flex-col gap-4 w-full">
-        <div
-          class="flex flex-row justify-start items-center gap-3 border-2 border-border rounded-md px-2 py-4"
-        >
-          <div
-            class="w-12 h-12 bg-border/70 rounded-full flex flex-col items-center justify-center text-primary/80"
-          >
-            <mat-icon class="material-icons-outlined" aria-label="Simbolo de dinheiro"
-              >payments</mat-icon
-            >
-          </div>
-          <div class="flex-1">
-            <span class="text-sm leading-none"
-              >Ao contratar, o dinheiro será depositado na sua
-              <span class="font-semibold text-primary-light">Conta Caixa</span
-              >&nbsp;imediatamente.</span
-            >
-          </div>
-        </div>
-
-        <div
-          class="flex flex-row justify-start items-center gap-3 border-2 border-border rounded-md px-2 py-4"
-        >
-          <div
-            class="w-12 h-12 bg-border/70 rounded-full flex flex-col items-center justify-center text-primary/80"
-          >
-            <mat-icon class="material-icons-outlined" aria-label="Simbolo de interrogação">
-              help_outline
-            </mat-icon>
-          </div>
-          <div class="flex-1">
-            <span class="text-sm leading-none">Ficou com alguma dúvida?&nbsp;&nbsp;</span>
-            <span class="text-sm text-primary-light underline">Entre em contato conosco</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <app-button [label]="'Fechar'" classes="w-full mt-8" (click)="irParaHome()" />
-  </div>
+<div *ngIf="isLoading; else resumoSimulacaoContainer">
+  <app-animation-player />
 </div>
+
+<ng-template #resumoSimulacaoContainer>
+  <div class="px-5 flex flex-col gap-8 h-full">
+    <div class="flex flex-col w-full gap-3">
+      <h2 class="font-caixa font-semibold text-2xl mt-4 m-0 p-0">
+        Resuma da simulação do empréstimo no valor de:
+      </h2>
+      <span class="font-caixa font-semibold text-2xl text-primary leading-none"
+        >{{
+          resumoSimulacao.resultado_simulacao.valor_solicitado
+            | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+        }}
+      </span>
+    </div>
+    <div class="flex flex-col flex-1 justify-between">
+      <div class="flex flex-col flex-1 gap-8 justify-start items-start">
+        <div id="resumo-simulacao" class="w-full flex flex-col gap-6">
+          <div id="total-em-parcelas" class="w-full flex flex-row justify-between items-start">
+            <span>Você pagará</span>
+            <div class="flex flex-col items-end">
+              <span class="font-semibold"
+                >{{ resumoSimulacao.resultado_simulacao.prazo }}x
+                {{
+                  resumoSimulacao.resultado_simulacao.parcela_mensal
+                    | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+                }}</span
+              >
+              <a
+                routerLink="/simulacao/detalhamento-parcelas"
+                class="font-light text-primary-light underline"
+              >
+                Ver parcelas
+              </a>
+            </div>
+          </div>
+
+          <div id="taxa-efetiva-mensal" class="w-full flex flex-row justify-between items-start">
+            <span>Taxa efetiva</span>
+            <div class="flex flex-col items-end">
+              <span class="font-semibold">{{
+                resumoSimulacao.resultado_simulacao.taxa_efetiva_mensal | percent: '1.2-2' : 'pt-BR'
+              }}</span>
+              <span class="font-light">ao mês</span>
+            </div>
+          </div>
+
+          <app-divider />
+
+          <div id="total-a-pagar" class="w-full flex flex-row justify-between items-start">
+            <span>Total a Pagar</span>
+            <div class="flex flex-col items-end">
+              <span class="font-semibold">{{
+                resumoSimulacao.resultado_simulacao.valor_total_com_juros
+                  | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+              }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="infos-adicionais" class="flex flex-col gap-4 w-full">
+          <div
+            class="flex flex-row justify-start items-center gap-3 border-2 border-border rounded-md px-2 py-4"
+          >
+            <div
+              class="w-12 h-12 bg-border/70 rounded-full flex flex-col items-center justify-center text-primary/80"
+            >
+              <mat-icon class="material-icons-outlined" aria-label="Simbolo de dinheiro"
+                >payments</mat-icon
+              >
+            </div>
+            <div class="flex-1">
+              <span class="text-sm leading-none"
+                >Ao contratar, o dinheiro será depositado na sua
+                <span class="font-semibold text-primary-light">Conta Caixa</span
+                >&nbsp;imediatamente.</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="flex flex-row justify-start items-center gap-3 border-2 border-border rounded-md px-2 py-4"
+          >
+            <div
+              class="w-12 h-12 bg-border/70 rounded-full flex flex-col items-center justify-center text-primary/80"
+            >
+              <mat-icon class="material-icons-outlined" aria-label="Simbolo de interrogação">
+                help_outline
+              </mat-icon>
+            </div>
+            <div class="flex-1">
+              <span class="text-sm leading-none">Ficou com alguma dúvida?&nbsp;&nbsp;</span>
+              <span class="text-sm text-primary-light underline">Entre em contato conosco</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-button [label]="'Fechar'" classes="w-full mt-8" (click)="irParaHome()" />
+    </div>
+  </div>
+</ng-template>

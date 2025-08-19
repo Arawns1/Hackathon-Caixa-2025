@@ -1,10 +1,12 @@
 <div class="w-full flex flex-col">
   <div class="flex flex-row items-center justify-between py-6 px-1">
     <div class="flex flex-row gap-3">
-      <span>1ª</span>
-      <span>17 de setembro de 2025</span>
+      <span>{{ numeroParcela + 1 }}ª</span>
+      <span>Parcela</span>
     </div>
-    <span class="font-semibold">R$ 931,50</span>
+    <span class="font-semibold">{{
+      parcela.valor_prestacao | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+    }}</span>
   </div>
   <app-divider />
 </div>
