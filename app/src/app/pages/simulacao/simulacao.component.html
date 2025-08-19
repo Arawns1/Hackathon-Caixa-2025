@@ -16,17 +16,42 @@
           decimalMarker=","
           [dropSpecialCharacters]="true"
           formControlName="valor_solicitado"
+          [ngClass]="{
+            'border-b-red-500':
+              form.get('valor_solicitado')?.touched && form.get('valor_solicitado')?.invalid,
+          }"
         />
+        <small
+          class="text-red-500"
+          *ngIf="
+            form.get('valor_solicitado')?.touched &&
+            form.get('valor_solicitado')?.hasError('required')
+          "
+        >
+          O valor solicitado é obrigatório
+        </small>
       </div>
 
       <div class="flex flex-col gap-2">
         <span class="font-normal">Em quantas vezes quer pagar?</span>
-        <select class="bg-card h-12 px-3 rounded overflow-hidden" formControlName="prazo">
+        <select
+          class="bg-card h-14 px-3 overflow-hidden rounded-md border-2 border-border"
+          [ngClass]="{
+            'outline-red-500 outline-2': form.get('prazo')?.touched && form.get('prazo')?.invalid,
+          }"
+          formControlName="prazo"
+        >
           <option value="" disabled selected>Número de parcelas</option>
           <option *ngFor="let n of parcelas" [value]="n">
             {{ n }} parcela{{ n > 1 ? 's' : '' }}
           </option>
         </select>
+        <small
+          class="text-red-500"
+          *ngIf="form.get('prazo')?.touched && form.get('prazo')?.hasError('required')"
+        >
+          A seleção de parcelas é obrigatória
+        </small>
       </div>
     </div>
 

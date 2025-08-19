@@ -10,12 +10,11 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
-import { ButtonComponent } from '../../components/button/button.component';
-import { ProdutosContextService } from './../../services/context/produtos/produtos-context.service';
 import { NgxMaskDirective } from 'ngx-mask';
-import { ProdutoDTO, SalvarProdutoDTO } from '../../models/Produto';
-import { SimulacaoService } from '../../services/api/simulacao/simulacao.service';
+import { ButtonComponent } from '../../components/button/button.component';
+import { ProdutoDTO } from '../../models/Produto';
 import { SimulacaoContextService } from '../../services/context/simulacao/simulacao-context.service';
+import { ProdutosContextService } from './../../services/context/produtos/produtos-context.service';
 
 @Component({
   selector: 'app-simulacao',

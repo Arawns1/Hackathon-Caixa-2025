@@ -104,7 +104,7 @@ app.post("/simulacoes", (req, res, next) => {
         parcelas,
       },
     });
-  }, 2000);
+  }, 5000);
 });
 
 app.listen(port, () => {
