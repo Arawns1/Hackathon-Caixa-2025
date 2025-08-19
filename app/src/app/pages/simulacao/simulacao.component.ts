@@ -15,6 +15,6 @@ export class SimulacaoComponent {
   constructor(private router: Router) {}
 
   irParaResumoSimulacao() {
-    this.router.navigate(['/resumo-simulacao']); // rota desejada
+    this.router.navigate(['/simulacao/resumo']);
   }
 }

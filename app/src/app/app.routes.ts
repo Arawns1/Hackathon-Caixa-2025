@@ -3,26 +3,26 @@ import { ListaProdutosComponent } from './pages/lista-produtos/lista-produtos.co
 import { SimulacaoComponent } from './pages/simulacao/simulacao.component';
 import { ResumoSimulacaoComponent } from './pages/resumo-simulacao/resumo-simulacao.component';
 import { DetalhamentoParcelasComponent } from './pages/detalhamento-parcelas/detalhamento-parcelas.component';
+import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: ListaProdutosComponent,
+    path: 'produtos',
+    children: [
+      { path: '', component: ListaProdutosComponent },
+      { path: 'cadastro', component: CadastroProdutoComponent },
+    ],
   },
   {
     path: 'simulacao',
-    component: SimulacaoComponent,
-  },
-  {
-    path: 'resumo-simulacao',
-    component: ResumoSimulacaoComponent,
-  },
-  {
-    path: 'detalhamento-parcelas',
-    component: DetalhamentoParcelasComponent,
+    children: [
+      { path: '', component: SimulacaoComponent },
+      { path: 'resumo', component: ResumoSimulacaoComponent },
+      { path: 'detalhamento-parcelas', component: DetalhamentoParcelasComponent },
+    ],
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'produtos',
   },
 ];

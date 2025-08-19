@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,9 +10,15 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  constructor(private router: Router) {}
+  constructor(
+    private location: Location,
+    private router: Router,
+  ) {}
 
   voltarPagina() {
-    this.router.navigate(['']); // rota desejada
+    if (this.router.url === '/produtos') {
+      return;
+    }
+    this.location.back();
   }
 }
