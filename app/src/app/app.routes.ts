@@ -9,20 +9,29 @@ export const routes: Routes = [
   {
     path: 'produtos',
     children: [
-      { path: '', component: ListaProdutosComponent },
-      { path: 'cadastro', component: CadastroProdutoComponent },
+      { path: '', component: ListaProdutosComponent, data: { title: 'Lista de Produtos' } },
+      {
+        path: 'cadastro',
+        component: CadastroProdutoComponent,
+        data: { title: 'Novo Produto' },
+      },
     ],
   },
   {
     path: 'simulacao',
     children: [
-      { path: '', component: SimulacaoComponent },
-      { path: 'resumo', component: ResumoSimulacaoComponent },
-      { path: 'detalhamento-parcelas', component: DetalhamentoParcelasComponent },
+      { path: '', component: SimulacaoComponent, data: { title: 'Simulação' } },
+      {
+        path: 'resumo',
+        component: ResumoSimulacaoComponent,
+        data: { title: 'Resumo da Simulação' },
+      },
+      {
+        path: 'detalhamento-parcelas',
+        component: DetalhamentoParcelasComponent,
+        data: { title: 'Dados das Parcelas' },
+      },
     ],
   },
-  {
-    path: '**',
-    redirectTo: 'produtos',
-  },
+  { path: '**', redirectTo: 'produtos' },
 ];
