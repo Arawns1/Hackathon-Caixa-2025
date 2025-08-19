@@ -1,0 +1,27 @@
+<div class="px-5 flex flex-col h-full">
+  <h2 class="text-white font-caixa font-semibold text-2xl mt-6 mb-4">Simule seu empréstimo</h2>
+
+  <div class="flex flex-col flex-1 justify-between">
+    <div class="text-white flex flex-col gap-8 mt-6">
+      <div class="flex flex-col gap-2">
+        <span class="font-normal">De quanto você precisa?</span>
+        <input
+          class="font-caixa h-12 border-b-2 border-border w-full text-primary font-semibold text-xl"
+          value="R$ 10.000,00"
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <span class="font-normal">Em quantas vezes quer pagar?</span>
+        <select class="bg-card h-12 px-3 rounded overflow-hidden">
+          <option value="" disabled selected>Número de parcelas</option>
+          <option value="1">1 parcela</option>
+          <option value="2">2 parcelas</option>
+          <option value="3">3 parcelas</option>
+        </select>
+      </div>
+    </div>
+
+    <app-button [label]="'Próximo'" classes="w-full" />
+  </div>
+</div>

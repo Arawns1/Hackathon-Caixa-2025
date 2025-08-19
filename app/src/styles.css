@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'CaixaSTD';
+  src: url('./assets/fonts/CAIXAStd-Book.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CaixaSTD';
+  src: url('./assets/fonts/CAIXAStd-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CaixaSTD';
+  src: url('./assets/fonts/CAIXAStd-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CaixaSTD';
+  src: url('./assets/fonts/CAIXAStd-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@theme {
+  --font-caixa: CaixaSTD, sans-serif;
+  --color-primary: #005ca9;
+  --color-primary-light: #2d8ad8;
+  --color-secondary: #a65e00;
+  --color-background: #232323;
+  --color-light-gray: rgba(50, 50, 56, 0.8);
+  --color-card: rgba(48, 48, 48, 0.8);
+  --color-border: rgba(50, 50, 56, 1);
+}
+
+html,
+body,
+main {
+  height: 100%;
+  background-color: var(--color-background);
+}
+body {
+  margin: 0;
+  font-family: CaixaSTD, 'Helvetica Neue', sans-serif;
+}
