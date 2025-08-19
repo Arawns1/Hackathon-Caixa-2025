@@ -12,7 +12,9 @@
           <span>Você pagará</span>
           <div class="flex flex-col items-end">
             <span class="font-semibold">12x R$931,50</span>
-            <span class="font-light text-primary-light underline">Ver parcelas detalhadas</span>
+            <a routerLink="/detalhamento-parcelas" class="font-light text-primary-light underline">
+              Ver parcelas detalhadas
+            </a>
           </div>
         </div>
 
@@ -24,7 +26,7 @@
           </div>
         </div>
 
-        <hr id="divider" class="text-border" />
+        <app-divider />
 
         <div id="total-a-pagar" class="w-full flex flex-row justify-between items-start">
           <span>Total a Pagar</span>

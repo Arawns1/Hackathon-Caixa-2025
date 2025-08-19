@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from '../../shared/button/button.component';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { DividerComponent } from '../../shared/divider/divider.component';
 
 @Component({
   selector: 'app-resumo-simulacao',
-  imports: [MatIconModule, ButtonComponent],
+  imports: [MatIconModule, ButtonComponent, RouterModule, DividerComponent],
   templateUrl: './resumo-simulacao.component.html',
   styleUrl: './resumo-simulacao.component.css',
 })
