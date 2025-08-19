@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CardProdutoComponent } from '../../shared/card-produto/card-produto.component';
+import { CardProdutoComponent } from '../../components/card-produto/card-produto.component';
 import { RouterModule } from '@angular/router';
 
 @Component({

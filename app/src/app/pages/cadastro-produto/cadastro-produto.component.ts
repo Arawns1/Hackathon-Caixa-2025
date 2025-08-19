@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
-import { ButtonComponent } from '../../shared/button/button.component';
+import { ButtonComponent } from '../../components/button/button.component';
 
 @Component({
   selector: 'app-cadastro-produto',

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { ButtonComponent } from '../../shared/button/button.component';
+import { ButtonComponent } from '../../components/button/button.component';
 import { Router, RouterModule } from '@angular/router';
-import { DividerComponent } from '../../shared/divider/divider.component';
+import { DividerComponent } from '../../components/divider/divider.component';
 
 @Component({
   selector: 'app-resumo-simulacao',
