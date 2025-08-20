@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ParcelaItemComponent } from '../../components/parcela-item/parcela-item.component';
 import { ParcelaSimulacaoDTO } from '../../models/Parcela';
 import { SimulacaoContextService } from '../../services/context/simulacao/simulacao-context.service';
+import { ToastService } from '../../services/libs/toast/toast.service';
 
 @Component({
   selector: 'app-detalhamento-parcelas',
@@ -17,12 +18,13 @@ export class DetalhamentoParcelasComponent implements OnInit {
   constructor(
     private router: Router,
     private simulacaoContext: SimulacaoContextService,
+    private toast: ToastService,
   ) {}
 
   ngOnInit() {
     const respostaSimulacao = this.simulacaoContext.respostaSimulacao();
     if (!respostaSimulacao) {
-      alert('Simulacao nao encotrada');
+      this.toast.erro('Erro ao visualizar parcelas. Tente novamente mais tarde');
       return this.router.navigate(['/']);
     }
     return (this.parcelas = respostaSimulacao.resultado_simulacao.parcelas);

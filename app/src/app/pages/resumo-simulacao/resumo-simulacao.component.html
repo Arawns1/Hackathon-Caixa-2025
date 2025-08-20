@@ -1,16 +1,20 @@
 <ng-container *ngIf="isLoading">
-  <app-loading-simulacao />
+  <div class="flex h-full w-full flex-col items-center justify-center pb-32">
+    <app-loading-simulacao />
+  </div>
 </ng-container>
 
 <ng-container *ngIf="isSimulacaoComSucesso">
-  <app-sucesso-simulacao />
+  <div class="flex h-full w-full flex-col items-center justify-center pb-32">
+    <app-sucesso-simulacao />
+  </div>
 </ng-container>
 
 <ng-container *ngIf="mostrarResumo">
-  <div class="px-5 flex flex-col gap-8 h-full">
+  <div class="px-5 flex flex-col gap-8 h-full pb-20">
     <div class="flex flex-col w-full gap-3">
       <h2 class="font-caixa font-semibold text-2xl mt-4 m-0 p-0">
-        Resuma da simulação do empréstimo no valor de:
+        Resuma da simulação do {{ resumoSimulacao.produto.nome }} no valor de:
       </h2>
       <span class="font-caixa font-semibold text-2xl text-primary leading-none"
         >{{
@@ -45,9 +49,17 @@
             <span>Taxa efetiva</span>
             <div class="flex flex-col items-end">
               <span class="font-semibold">{{
-                resumoSimulacao.resultado_simulacao.taxa_efetiva_mensal | percent: '1.2-2' : 'pt-BR'
+                resumoSimulacao.resultado_simulacao.taxa_efetiva_mensal | percent: '1.0-20'
               }}</span>
               <span class="font-light">ao mês</span>
+            </div>
+          </div>
+
+          <div id="taxa-anual" class="w-full flex flex-row justify-between items-start">
+            <span>Taxa anual</span>
+            <div class="flex flex-col items-end">
+              <span class="font-semibold">{{ resumoSimulacao.produto.taxa_anual }}%</span>
+              <span class="font-light">ao ano</span>
             </div>
           </div>
 
@@ -96,7 +108,13 @@
             </div>
             <div class="flex-1">
               <span class="text-sm leading-none">Ficou com alguma dúvida?&nbsp;&nbsp;</span>
-              <span class="text-sm text-primary-light underline">Entre em contato conosco</span>
+              <a
+                href="https://www.caixa.gov.br/atendimento/Paginas/default.aspx"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="text-sm text-primary-light underline">Entre em contato conosco</span>
+              </a>
             </div>
           </div>
         </div>

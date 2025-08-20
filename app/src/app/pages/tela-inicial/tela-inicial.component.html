@@ -1,0 +1,28 @@
+<div class="flex flex-col gap-12 justify-center items-center px-5 pt-24 pb-16 h-full gradient">
+  <div class="flex flex-col justify-center items-center gap-8">
+    <div class="h-32 w-32 bg-white flex flex-col items-center justify-center">
+      <span class="text-primary font-light">logo caixa</span>
+    </div>
+    <h2 class="text-white font-caixa font-semibold text-2xl text-center">
+      Bem-vindo(a) ao App de <span class="text-primary">Simulações de Empréstimo</span>
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-2 gap-8 flex-1">
+    <app-card-menu
+      [label]="'Realizar empréstimo'"
+      [icon]="'attach_money'"
+      [routerLink]="'/produtos'"
+    />
+    <app-card-menu
+      [label]="'Cadastrar novo Produto'"
+      [icon]="'add'"
+      [routerLink]="'/produtos/cadastro'"
+    />
+  </div>
+
+  <div class="flex flex-col font-light text-center text-placeholder">
+    <span>Feito por Gabriel Damico (c158787)</span>
+    <span>Hackathon Caixa - 2025</span>
+  </div>
+</div>

@@ -15,6 +15,7 @@ import { ButtonComponent } from '../../components/button/button.component';
 import { ProdutoDTO } from '../../models/Produto';
 import { SimulacaoContextService } from '../../services/context/simulacao/simulacao-context.service';
 import { ProdutosContextService } from './../../services/context/produtos/produtos-context.service';
+import { ToastService } from '../../services/libs/toast/toast.service';
 
 @Component({
   selector: 'app-simulacao',
@@ -39,15 +40,15 @@ export class SimulacaoComponent implements OnInit {
     public produtoContext: ProdutosContextService,
     private simulacaoContext: SimulacaoContextService,
     private router: Router,
+    private toast: ToastService,
   ) {}
 
   ngOnInit() {
     const produtoContexto = this.produtoContext.produtoSelecionado();
     if (!produtoContexto) {
-      alert('Produto não selecionado');
+      this.toast.erro('Erro ao realizar simulação. Tente novamente mais tarde');
       return this.router.navigate(['']);
     }
-
     this.produto = produtoContexto;
     return (this.form = new FormGroup({
       id_produto: new FormControl(this.produto.id, [Validators.required]),

@@ -7,6 +7,7 @@ export interface SimularEmprestimoDTO {
 }
 
 export interface RespostaSimulacaoDTO {
+  id: string;
   produto: ProdutoDTO;
   resultado_simulacao: {
     valor_solicitado: number;

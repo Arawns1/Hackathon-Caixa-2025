@@ -2,12 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const database = require("./database");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+const host = process.env.RENDER_EXTERNAL_URL || "http://localhost:" + port;
 
 app.use(cors());
 app.use(express.json());
 
-const db = database.init(); // opcional: database.init("meu_banco.sqlite");
+const db = database.init("./db.sqlite");
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -95,8 +96,10 @@ app.post("/simulacoes", (req, res, next) => {
       saldo_devedor: Number(saldo_devedor.toFixed(2)),
     });
   }
+
   setTimeout(() => {
     res.status(200).json({
+      id: `${produto.id}-${valor_solicitado}-${prazo}`,
       produto,
       resultado_simulacao: {
         valor_solicitado,
@@ -111,5 +114,5 @@ app.post("/simulacoes", (req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`API rodando em http://localhost:${port}`);
+  console.log(`🚀 API rodando em ${host}`);
 });

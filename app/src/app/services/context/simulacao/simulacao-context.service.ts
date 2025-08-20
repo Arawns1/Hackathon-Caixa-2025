@@ -15,7 +15,7 @@ export class SimulacaoContextService {
     this._solicitacaoSimulacao.set(solicitacaoSimulacao);
   }
 
-  setRespostaSimulacao(respostaSimulacao: RespostaSimulacaoDTO) {
+  setRespostaSimulacao(respostaSimulacao: RespostaSimulacaoDTO | null) {
     this._respostaSimulacao.set(respostaSimulacao);
   }
 }

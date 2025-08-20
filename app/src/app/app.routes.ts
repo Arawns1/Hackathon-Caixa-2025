@@ -4,8 +4,14 @@ import { SimulacaoComponent } from './pages/simulacao/simulacao.component';
 import { ResumoSimulacaoComponent } from './pages/resumo-simulacao/resumo-simulacao.component';
 import { DetalhamentoParcelasComponent } from './pages/detalhamento-parcelas/detalhamento-parcelas.component';
 import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
+import { TelaInicialComponent } from './pages/tela-inicial/tela-inicial.component';
 
 export const routes: Routes = [
+  {
+    path: '',
+    component: TelaInicialComponent,
+    data: { showHeader: false },
+  },
   {
     path: 'produtos',
     children: [
@@ -33,5 +39,5 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: 'produtos' },
+  { path: '**', redirectTo: '' },
 ];

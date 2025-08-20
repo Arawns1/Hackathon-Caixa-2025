@@ -1,9 +1,10 @@
 <header
-  class="text-white flex flex-row justify-between items-end bg-background flex-1 h-30 px-5 py-5 border-border border-b-2 sticky top-0"
+  *ngIf="showHeader"
+  class="text-white flex flex-row justify-between items-end bg-background flex-1 h-20 px-5 py-3 border-border border-b-2 sticky top-0 shadow-md"
 >
   <div class="w-full flex flex-row justify-between items-center">
     <button
-      class="h-10 w-10 flex items-center justify-center bg-light-gray p-2 rounded-full"
+      class="h-10 w-10 flex items-center justify-center bg-light-gray p-2 rounded-full hover:cursor-pointer hover:bg-background/80"
       (click)="voltarPagina()"
     >
       <mat-icon

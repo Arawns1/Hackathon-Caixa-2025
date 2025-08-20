@@ -38,7 +38,7 @@ export class CadastroProdutoComponent {
     this.produtoService.salvar(this.form.value as SalvarProdutoDTO).subscribe({
       next: () => {
         this.toast.sucesso('Produto cadastrado com sucesso!');
-        this.router.navigate(['/']);
+        this.router.navigate(['/produtos']);
       },
       error: () => {
         this.toast.erro('Erro ao cadastrar. Tente novamente mais tarde');

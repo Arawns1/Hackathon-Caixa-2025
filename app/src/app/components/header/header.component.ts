@@ -12,6 +12,7 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 })
 export class HeaderComponent {
   titulo = 'Empréstimos';
+  showHeader = true;
 
   constructor(
     private router: Router,
@@ -20,21 +21,23 @@ export class HeaderComponent {
   ) {
     this.router.events
       .pipe(
-        filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
         map(() => {
-          let r = this.route;
-          while (r.firstChild) r = r.firstChild;
-          return r;
+          let activeRoute = this.route;
+          while (activeRoute.firstChild) {
+            activeRoute = activeRoute.firstChild;
+          }
+          return activeRoute;
         }),
-        mergeMap(r => r.data),
+        mergeMap(activeRoute => activeRoute.data),
       )
-      .subscribe(d => (this.titulo = d['title'] ?? 'Empréstimos'));
+      .subscribe(routeData => {
+        this.titulo = routeData['title'] ?? 'Empréstimos';
+        this.showHeader = routeData['showHeader'] ?? true;
+      });
   }
 
   voltarPagina() {
-    if (this.router.url === '/produtos') {
-      return;
-    }
     this.location.back();
   }
 }

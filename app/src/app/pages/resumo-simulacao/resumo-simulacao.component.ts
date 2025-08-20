@@ -9,6 +9,7 @@ import { RespostaSimulacaoDTO } from '../../models/Simulacao';
 import { SimulacaoService } from '../../services/api/simulacao/simulacao.service';
 import { SimulacaoContextService } from '../../services/context/simulacao/simulacao-context.service';
 import { SucessoSimulacaoComponent } from '../../components/sucesso-simulacao/sucesso-simulacao.component';
+import { ToastService } from '../../services/libs/toast/toast.service';
 
 @Component({
   selector: 'app-resumo-simulacao',
@@ -35,20 +36,23 @@ export class ResumoSimulacaoComponent implements OnInit {
     private router: Router,
     private simulacaoContext: SimulacaoContextService,
     private simulacaoService: SimulacaoService,
+    private toast: ToastService,
   ) {}
 
   ngOnInit() {
-    this.isLoading = true;
     const simulacao = this.simulacaoContext.solicitacaoSimulacao();
     if (!simulacao) {
-      alert('Simulacao nao encotrada');
-      return this.router.navigate(['/']);
+      this.toast.erro('Erro ao visualizar simulação. Tente novamente mais tarde');
+      this.router.navigate(['/']);
+      return;
     }
 
-    return this.simulacaoService.simular(simulacao).subscribe({
+    this.isLoading = true;
+    this.simulacaoService.simular(simulacao).subscribe({
       next: data => {
         this.resumoSimulacao = data;
         this.simulacaoContext.setRespostaSimulacao(data);
+        this.isLoading = false;
         this.isSimulacaoComSucesso = true;
 
         setTimeout(() => {
@@ -56,12 +60,15 @@ export class ResumoSimulacaoComponent implements OnInit {
           this.mostrarResumo = true;
         }, 2500);
       },
-      error: err => console.error(err),
-      complete: () => (this.isLoading = false),
+      error: err => {
+        this.isLoading = false;
+        console.error(err);
+      },
     });
   }
 
   irParaHome() {
+    this.simulacaoContext.setRespostaSimulacao(null);
     this.router.navigate(['/']);
   }
 }

@@ -1,0 +1,17 @@
+<div
+  class="text-primary flex flex-col gap-2 w-40 h-40 justify-center items-center bg-card rounded-md p-4 active:bg-card/80 active:text-primary/80 hover:bg-card/80 hover:text-primary/80 hover:cursor-pointer"
+>
+  <div
+    class="w-16 h-16 bg-background/50 rounded-full flex flex-col items-center justify-center text-primary/80"
+  >
+    <mat-icon
+      aria-hidden="false"
+      [fontIcon]="icon"
+      style="width: 40px; height: 40px; font-size: 40px"
+    ></mat-icon>
+  </div>
+
+  <span class="font-normal text-primary-light text-center leading-tight">
+    {{ label }}
+  </span>
+</div>

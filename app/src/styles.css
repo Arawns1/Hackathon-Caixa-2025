@@ -37,10 +37,10 @@
   --color-primary-light: #2d8ad8;
   --color-secondary: #a65e00;
   --color-background: #232323;
-  --color-light-gray: rgba(50, 50, 56, 0.8);
-  --color-card: rgba(48, 48, 48, 0.8);
-  --color-border: rgba(48, 48, 48, 1);
-  --color-placeholder: rgba(226, 226, 226, 0.5);
+  --color-light-gray: #323238cc;
+  --color-card: #303030cc;
+  --color-border: #303030ff;
+  --color-placeholder: #e2e2e280;
 }
 
 html,
@@ -57,4 +57,8 @@ body {
 .toast-top-center {
   top: 2rem !important;
   box-shadow: 0 4px 12px rgba(145, 144, 144, 0.01);
+}
+
+.gradient {
+  background: linear-gradient(180deg, rgba(35, 35, 35, 0.2) 73.26%, rgba(0, 92, 169, 0.2) 100%);
 }
