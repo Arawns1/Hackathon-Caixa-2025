@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined');
 @import 'tailwindcss';
+@import 'ngx-toastr/toastr';
 
 @font-face {
   font-family: 'CaixaSTD';
@@ -51,4 +52,9 @@ body {
 body {
   margin: 0;
   font-family: CaixaSTD, 'Helvetica Neue', sans-serif;
+}
+
+.toast-top-center {
+  top: 2rem !important;
+  box-shadow: 0 4px 12px rgba(145, 144, 144, 0.01);
 }

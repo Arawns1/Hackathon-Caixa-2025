@@ -32,15 +32,18 @@ app.post("/produtos", (req, res) => {
   );
   const result = stmt.run(nome, taxa_anual, prazo_maximo);
 
-  res.status(201).json({
-    id: result.lastInsertRowid,
-    nome,
-    taxa_anual,
-    prazo_maximo,
-  });
+  // return res.status(500).send();
+
+  setTimeout(() => {
+    res.status(201).json({
+      id: result.lastInsertRowid,
+      nome,
+      taxa_anual,
+      prazo_maximo,
+    });
+  }, 2000);
 });
 
-// Realizar simulações
 app.post("/simulacoes", (req, res, next) => {
   const { id_produto, valor_solicitado, prazo } = req.body;
 

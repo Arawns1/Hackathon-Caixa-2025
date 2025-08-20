@@ -11,4 +11,5 @@ export class ButtonComponent {
   @Input({ required: true }) label = '';
   @Input() classes = '';
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
+  @Input() disabled: boolean = false;
 }

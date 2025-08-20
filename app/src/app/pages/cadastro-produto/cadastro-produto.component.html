@@ -2,87 +2,92 @@
   <h2 class="text-white font-caixa font-semibold text-2xl mt-6 mb-4">
     Cadastrar novo produto de empréstimo
   </h2>
-  <form class="flex flex-col flex-1 justify-between gap-8" [formGroup]="form" (ngSubmit)="submit()">
-    <div class="w-full flex flex-col gap-2">
-      <label>Nome do produto*</label>
-      <input
-        class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
-        placeholder="Digite o nome do produto"
-        formControlName="nome"
-        [ngClass]="{
-          'border-red-500': form.get('nome')?.touched && form.get('nome')?.invalid,
-        }"
-      />
-      <small
-        class="text-red-500"
-        *ngIf="form.get('nome')?.touched && form.get('nome')?.hasError('required')"
-      >
-        Nome é obrigatório
-      </small>
-      <small
-        class="text-red-500"
-        *ngIf="form.get('nome')?.touched && form.get('nome')?.hasError('maxlength')"
-      >
-        Máximo de 255 caracteres
-      </small>
+  <form class="flex flex-col flex-1 justify-between" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="flex flex-col flex-1 justify-start gap-8">
+      <div class="w-full flex flex-col gap-2">
+        <label>Nome do produto*</label>
+        <input
+          class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
+          placeholder="Digite o nome do produto"
+          formControlName="nome"
+          [ngClass]="{
+            'border-red-500': form.get('nome')?.touched && form.get('nome')?.invalid,
+          }"
+        />
+        <small
+          class="text-red-500"
+          *ngIf="form.get('nome')?.touched && form.get('nome')?.hasError('required')"
+        >
+          Nome é obrigatório
+        </small>
+        <small
+          class="text-red-500"
+          *ngIf="form.get('nome')?.touched && form.get('nome')?.hasError('maxlength')"
+        >
+          Máximo de 255 caracteres
+        </small>
+      </div>
+
+      <div class="w-full flex flex-col gap-2">
+        <label>Taxa anual*</label>
+        <input
+          class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
+          [ngClass]="{
+            'border-red-500': form.get('taxa_anual')?.touched && form.get('taxa_anual')?.invalid,
+          }"
+          placeholder="0,00%"
+          formControlName="taxa_anual"
+          suffix="%"
+          mask="separator.2"
+          thousandSeparator=""
+          separatorLimit="99999"
+          [dropSpecialCharacters]="true"
+        />
+        <small
+          class="text-red-500"
+          *ngIf="form.get('taxa_anual')?.touched && form.get('taxa_anual')?.hasError('required')"
+        >
+          Taxa anual é obrigatória
+        </small>
+      </div>
+
+      <div class="w-full flex flex-col gap-2">
+        <label>Qual o prazo máximo?*</label>
+        <input
+          class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
+          [ngClass]="{
+            'border-red-500':
+              form.get('prazo_maximo')?.touched && form.get('prazo_maximo')?.invalid,
+          }"
+          type="number"
+          placeholder="0"
+          formControlName="prazo_maximo"
+          mask="separator.0"
+          [dropSpecialCharacters]="true"
+        />
+        <small
+          class="text-red-500"
+          *ngIf="
+            form.get('prazo_maximo')?.touched && form.get('prazo_maximo')?.hasError('required')
+          "
+        >
+          Prazo máximo é obrigatório
+        </small>
+        <small
+          class="text-red-500"
+          *ngIf="form.get('prazo_maximo')?.touched && form.get('prazo_maximo')?.hasError('min')"
+        >
+          Prazo deve ser no mínimo 1
+        </small>
+        <small
+          class="text-red-500"
+          *ngIf="form.get('prazo_maximo')?.touched && form.get('prazo_maximo')?.hasError('max')"
+        >
+          Prazo deve ser no máximo 999
+        </small>
+      </div>
     </div>
 
-    <div class="w-full flex flex-col gap-2">
-      <label>Taxa anual*</label>
-      <input
-        class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
-        [ngClass]="{
-          'border-red-500': form.get('taxa_anual')?.touched && form.get('taxa_anual')?.invalid,
-        }"
-        placeholder="0,00%"
-        formControlName="taxa_anual"
-        suffix="%"
-        mask="separator.2"
-        thousandSeparator=""
-        separatorLimit="99999"
-        [dropSpecialCharacters]="true"
-      />
-      <small
-        class="text-red-500"
-        *ngIf="form.get('taxa_anual')?.touched && form.get('taxa_anual')?.hasError('required')"
-      >
-        Taxa anual é obrigatória
-      </small>
-    </div>
-
-    <div class="w-full flex flex-col gap-2">
-      <label>Qual o prazo máximo?*</label>
-      <input
-        class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
-        [ngClass]="{
-          'border-red-500': form.get('prazo_maximo')?.touched && form.get('prazo_maximo')?.invalid,
-        }"
-        type="number"
-        placeholder="0"
-        formControlName="prazo_maximo"
-        mask="separator.0"
-        [dropSpecialCharacters]="true"
-      />
-      <small
-        class="text-red-500"
-        *ngIf="form.get('prazo_maximo')?.touched && form.get('prazo_maximo')?.hasError('required')"
-      >
-        Prazo máximo é obrigatório
-      </small>
-      <small
-        class="text-red-500"
-        *ngIf="form.get('prazo_maximo')?.touched && form.get('prazo_maximo')?.hasError('min')"
-      >
-        Prazo deve ser no mínimo 1
-      </small>
-      <small
-        class="text-red-500"
-        *ngIf="form.get('prazo_maximo')?.touched && form.get('prazo_maximo')?.hasError('max')"
-      >
-        Prazo deve ser no máximo 999
-      </small>
-    </div>
-
-    <app-button [label]="'Salvar'" classes="w-full mt-8" type="submit" />
+    <app-button [label]="'Salvar'" classes="w-full mt-8" type="submit" [disabled]="isLoading" />
   </form>
 </div>

@@ -1,6 +1,7 @@
 <button
   [type]="type"
-  class="bg-secondary font-semibold p-3 rounded mt-2 text-white active:bg-secondary/50 active:text-white/50"
+  [disabled]="disabled"
+  class="bg-secondary font-semibold p-3 rounded mt-2 text-white active:bg-secondary/50 active:text-white/50 disabled:bg-secondary/40 disabled:text-white/40"
   [ngClass]="classes"
 >
   {{ label }}
