@@ -44,6 +44,7 @@ export class SimulacaoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.simulacaoContext.limparRespostaSimulacao();
     const produtoContexto = this.produtoContext.produtoSelecionado();
     if (!produtoContexto) {
       this.toast.erro('Erro ao realizar simulação. Tente novamente mais tarde');

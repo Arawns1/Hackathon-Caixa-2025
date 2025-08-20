@@ -15,10 +15,12 @@ export const routes: Routes = [
   {
     path: 'produtos',
     children: [
-      { path: '', component: ListaProdutosComponent, data: { title: 'Lista de Produtos' } },
+      { path: '',
+        loadComponent: () => import('./pages/lista-produtos/lista-produtos.component').then(m => m.ListaProdutosComponent),
+         data: { title: 'Lista de Produtos' } },
       {
         path: 'cadastro',
-        component: CadastroProdutoComponent,
+        loadComponent: () => import('./pages/cadastro-produto/cadastro-produto.component').then(m => m.CadastroProdutoComponent),
         data: { title: 'Novo Produto' },
       },
     ],
@@ -26,15 +28,15 @@ export const routes: Routes = [
   {
     path: 'simulacao',
     children: [
-      { path: '', component: SimulacaoComponent, data: { title: 'Simulação' } },
+      { path: '', loadComponent: () => import('./pages/simulacao/simulacao.component').then(m => m.SimulacaoComponent), data: { title: 'Simulação' } },
       {
         path: 'resumo',
-        component: ResumoSimulacaoComponent,
+        loadComponent: () => import('./pages/resumo-simulacao/resumo-simulacao.component').then(m => m.ResumoSimulacaoComponent),
         data: { title: 'Resumo da Simulação' },
       },
       {
         path: 'detalhamento-parcelas',
-        component: DetalhamentoParcelasComponent,
+        loadComponent: () => import('./pages/detalhamento-parcelas/detalhamento-parcelas.component').then(m => m.DetalhamentoParcelasComponent),
         data: { title: 'Dados das Parcelas' },
       },
     ],
