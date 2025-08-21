@@ -1,16 +1,71 @@
 <div class="px-5 flex flex-col gap-8 h-full pb-20">
-  <div class="flex flex-col w-full gap-3">
-    <h2 class="font-caixa font-semibold text-2xl mt-6 m-0 p-0 leading-none">
-      Detalhe das Parcelas
+  <div class="mt-6 flex flex-col gap-6">
+    <h2 class="font-caixa font-semibold text-2xl m-0 p-0 leading-none">
+      Detalhe das Parcelas Mês a Mês
     </h2>
-    <span class="font-caixa font-light leading-none"
-      >Resumo das parcelas mês a mês</span
-    >
+    <div class="flex flex-col w-full items-start">
+      <span>Numero de parcelas:</span>
+      <div class="flex flex-row gap-1 font-semibold text-">
+        <span>{{ resumoSimulacao.resultado_simulacao.prazo }}x de </span>
+        <span>{{
+          resumoSimulacao.resultado_simulacao.parcela_mensal
+            | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+        }}</span>
+      </div>
+    </div>
   </div>
-  <div class="flex flex-col flex-1 justify-start pb-14">
-    <app-parcela-item
-      *ngFor="let parcela of parcelas"
-      [parcela]="parcela"
-    />
+
+  <div class="flex flex-col gap-8 flex-1 justify-start pb-14">
+    <div class="flex flex-col justify-start">
+      <app-divider />
+      <cdk-accordion class="example-accordion">
+        @for (parcela of parcelas; track parcela; let index = $index) {
+          <cdk-accordion-item #accordionItem="cdkAccordionItem">
+            <app-parcela-item
+              [parcela]="parcela"
+              [isExpandido]="accordionItem.expanded"
+              (click)="accordionItem.toggle()"
+              tabindex="0"
+              [attr.id]="'accordion-header-' + index"
+              [attr.aria-expanded]="accordionItem.expanded"
+              [attr.aria-controls]="'accordion-body-' + index"
+            />
+            @if (accordionItem.expanded) {
+              <div
+                role="region"
+                [style.display]="accordionItem.expanded ? '' : 'none'"
+                [attr.id]="'accordion-body-' + index"
+                [attr.aria-labelledby]="'accordion-header-' + index"
+              >
+                <div class="flex flex-col gap-2 px-3 py-4">
+                  <div class="w-full flex flex-row items-center justify-between text-md font-light">
+                    <span>Valor amortização:</span>
+                    <span>{{
+                      parcela.valor_amortizacao
+                        | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+                    }}</span>
+                  </div>
+
+                  <div class="w-full flex flex-row items-center justify-between text-md font-light">
+                    <span>Valor juros:</span>
+                    <span>{{
+                      parcela.valor_juros | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+                    }}</span>
+                  </div>
+
+                  <div class="w-full flex flex-row items-center justify-between text-md font-light">
+                    <span>Saldo devedor:</span>
+                    <span>{{
+                      parcela.saldo_devedor | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+                    }}</span>
+                  </div>
+                </div>
+                <app-divider />
+              </div>
+            }
+          </cdk-accordion-item>
+        }
+      </cdk-accordion>
+    </div>
   </div>
 </div>

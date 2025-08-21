@@ -38,14 +38,12 @@ app.post("/produtos", (req, res) => {
 
   // return res.status(500).send();
 
-  setTimeout(() => {
-    res.status(201).json({
-      id: result.lastInsertRowid,
-      nome,
-      taxa_anual,
-      prazo_maximo,
-    });
-  }, 2000);
+  res.status(201).json({
+    id: result.lastInsertRowid,
+    nome,
+    taxa_anual,
+    prazo_maximo,
+  });
 });
 
 app.post("/simulacoes", (req, res, next) => {
@@ -77,6 +75,7 @@ app.post("/simulacoes", (req, res, next) => {
   let saldo_devedor = valor_solicitado;
   let valor_total_em_juros = 0;
   let valor_total_amortizado = 0;
+  let valor_total_com_juros = 0;
 
   const parcelas = [];
 
@@ -86,7 +85,7 @@ app.post("/simulacoes", (req, res, next) => {
     saldo_devedor -= valor_amortizacao;
     valor_total_em_juros += valor_juros;
     valor_total_amortizado += valor_amortizacao;
-
+    valor_total_com_juros += truncarCasasDecimais(parcela);
     parcelas.push({
       numero: i,
       valor_amortizacao: truncarCasasDecimais(valor_amortizacao),
@@ -106,12 +105,12 @@ app.post("/simulacoes", (req, res, next) => {
         taxa_efetiva_mensal: taxaMensal,
         parcela_mensal: truncarCasasDecimais(parcela),
         valor_total_com_juros: truncarCasasDecimais(parcela * prazo),
-        valor_total_amortizado: truncarCasasDecimais(valor_total_amortizado),
+        valor_total_amortizado: parseFloat(valor_solicitado.toFixed(2)),
         valor_total_em_juros: truncarCasasDecimais(valor_total_em_juros),
         parcelas,
       },
     });
-  }, 1000);
+  }, 2500);
 });
 
 function calcularParcelaPrice(valorSolicitado, taxa, prazo) {

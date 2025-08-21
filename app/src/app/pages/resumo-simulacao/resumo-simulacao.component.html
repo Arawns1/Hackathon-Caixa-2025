@@ -14,67 +14,97 @@
   <div class="px-5 flex flex-col gap-8 h-full pb-24">
     <div class="flex flex-col w-full gap-3">
       <h2 class="font-caixa font-semibold text-2xl mt-4 m-0 p-0">
-        Resumo da simulação do {{ resumoSimulacao.produto.nome }} no valor de:
+        Resumo da simulação do {{ resumoSimulacao.produto.nome }} no valor de&nbsp;
         <span class="font-caixa font-semibold text-2xl text-primary leading-none"
-        >{{
-          resumoSimulacao.resultado_simulacao.valor_solicitado
-            | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
-        }}
+          >{{
+            resumoSimulacao.resultado_simulacao.valor_solicitado
+              | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+          }}
         </span>
       </h2>
-      
     </div>
     <div class="flex flex-col flex-1 justify-between">
       <div class="flex flex-col flex-1 gap-8 justify-start items-start">
-        <div id="resumo-simulacao" class="w-full flex flex-col gap-6">
-          <div id="total-em-parcelas" class="w-full flex flex-row justify-between items-start">
-            <span>Você pagará</span>
-            <div class="flex flex-col items-end">
-              <span class="font-semibold"
-                >{{ resumoSimulacao.resultado_simulacao.prazo }}x
-                {{
-                  resumoSimulacao.resultado_simulacao.parcela_mensal
-                    | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
-                }}</span
-              >
-              <a
-                routerLink="/simulacao/detalhamento-parcelas"
-                class="font-light text-primary-light underline"
-              >
-                Ver parcelas
-              </a>
+        <div id="resumo-simulacao" class="w-full flex flex-col gap-4">
+          <div class="w-full flex flex-col gap-6">
+            <div id="total-em-parcelas" class="w-full flex flex-row justify-between items-start">
+              <span>Você pagará</span>
+              <div class="flex flex-col items-end">
+                <span class="font-semibold"
+                  >{{ resumoSimulacao.resultado_simulacao.prazo }}x
+                  {{
+                    resumoSimulacao.resultado_simulacao.parcela_mensal
+                      | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+                  }}</span
+                >
+                <a
+                  routerLink="/simulacao/detalhamento-parcelas"
+                  class="font-light text-primary-light underline"
+                >
+                  Ver parcelas
+                </a>
+              </div>
+            </div>
+
+            <div id="taxa-efetiva-mensal" class="w-full flex flex-row justify-between items-start">
+              <span>Taxa efetiva</span>
+              <div class="flex flex-col items-end">
+                <span class="font-semibold">{{
+                  resumoSimulacao.resultado_simulacao.taxa_efetiva_mensal | percent: '1.2-2'
+                }}</span>
+                <span class="font-light">ao mês</span>
+              </div>
+            </div>
+
+            <div id="taxa-anual" class="w-full flex flex-row justify-between items-start">
+              <span>Taxa anual</span>
+              <div class="flex flex-col items-end">
+                <span class="font-semibold">{{
+                  resumoSimulacao.produto.taxa_anual | percent: '1.2-2'
+                }}</span>
+                <span class="font-light">ao ano</span>
+              </div>
             </div>
           </div>
-
-          <div id="taxa-efetiva-mensal" class="w-full flex flex-row justify-between items-start">
-            <span>Taxa efetiva</span>
-            <div class="flex flex-col items-end">
-              <span class="font-semibold">{{
-                resumoSimulacao.resultado_simulacao.taxa_efetiva_mensal | percent: '1.2-2'
-              }}</span>
-              <span class="font-light">ao mês</span>
-            </div>
-          </div>
-
-          <div id="taxa-anual" class="w-full flex flex-row justify-between items-start">
-            <span>Taxa anual</span>
-            <div class="flex flex-col items-end">
-              <span class="font-semibold">{{
-                resumoSimulacao.produto.taxa_anual | percent: '1.2-2'
-              }}</span>
-              <span class="font-light">ao ano</span>
-            </div>
-          </div>
-
           <app-divider />
+          <div class="w-full flex flex-col gap-2">
+            <div
+              id="total-juros"
+              class="w-full flex flex-row justify-between items-start text-muted font-light"
+            >
+              <span>Juros totais</span>
+              <div class="flex flex-col items-end">
+                <span>{{
+                  resumoSimulacao.resultado_simulacao.valor_total_em_juros
+                    | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+                }}</span>
+              </div>
+            </div>
 
-          <div id="total-a-pagar" class="w-full flex flex-row justify-between items-start">
-            <span>Total a Pagar</span>
-            <div class="flex flex-col items-end">
-              <span class="font-semibold">{{
-                resumoSimulacao.resultado_simulacao.valor_total_com_juros
-                  | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
-              }}</span>
+            <div
+              id="total-amortizacoes"
+              class="w-full flex flex-row justify-between items-start text-muted font-light"
+            >
+              <span>Total em amortizações</span>
+              <div class="flex flex-col items-end">
+                <span>{{
+                  resumoSimulacao.resultado_simulacao.valor_total_amortizado
+                    | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+                }}</span>
+              </div>
+            </div>
+
+            <div
+              id="total-a-pagar"
+              class="w-full flex flex-row justify-between items-start font-semibold"
+            >
+              <span>Total a Pagar</span>
+              <div class="flex flex-col items-end">
+                <span>{{
+                  resumoSimulacao.resultado_simulacao.valor_total_com_juros
+                    | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+                }}</span>
+              </div>
             </div>
           </div>
         </div>

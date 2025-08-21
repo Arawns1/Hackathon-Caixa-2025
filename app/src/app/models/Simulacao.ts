@@ -15,6 +15,8 @@ export interface RespostaSimulacaoDTO {
     taxa_efetiva_mensal: number;
     parcela_mensal: number;
     valor_total_com_juros: number;
+    valor_total_amortizado: number;
+    valor_total_em_juros: number;
     parcelas: ParcelaSimulacaoDTO[];
   };
 }
