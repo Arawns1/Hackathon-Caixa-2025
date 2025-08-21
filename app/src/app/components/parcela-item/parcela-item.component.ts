@@ -12,5 +12,5 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ParcelaItemComponent {
   @Input() parcela: ParcelaSimulacaoDTO;
-  @Input() isExpandido: boolean;
+  @Input() isExpandido: boolean = false;
 }

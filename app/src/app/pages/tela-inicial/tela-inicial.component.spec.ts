@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { provideRouter } from '@angular/router';
+import { CardMenuComponent } from '../../components/card-menu/card-menu.component';
 
 import { TelaInicialComponent } from './tela-inicial.component';
 
@@ -8,7 +11,8 @@ describe('TelaInicialComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TelaInicialComponent]
+      imports: [TelaInicialComponent, RouterModule, CardMenuComponent],
+      providers: [provideRouter([])]
     })
     .compileComponents();
 

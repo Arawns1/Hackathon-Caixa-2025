@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AnimationPlayerComponent } from '../animation-player/animation-player.component';
 
 import { LoadingSimulacaoComponent } from './loading-simulacao.component';
 
@@ -8,7 +9,7 @@ describe('LoadingSimulacaoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LoadingSimulacaoComponent]
+      imports: [LoadingSimulacaoComponent, AnimationPlayerComponent]
     })
     .compileComponents();
 

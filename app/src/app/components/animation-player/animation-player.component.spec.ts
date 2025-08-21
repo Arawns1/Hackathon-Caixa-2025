@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DotLottieWebComponent } from 'ngx-dotlottie-web/src/web';
 
 import { AnimationPlayerComponent } from './animation-player.component';
 
@@ -8,7 +9,7 @@ describe('AnimationPlayerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AnimationPlayerComponent]
+      imports: [AnimationPlayerComponent, DotLottieWebComponent]
     })
     .compileComponents();
 

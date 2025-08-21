@@ -8,6 +8,4 @@ import { HeaderComponent } from './components/header/header.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = 'app-simulacao-emprestimos';
-}
+export class AppComponent {}
