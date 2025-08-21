@@ -1,0 +1,43 @@
+name: SonarQube Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonar:
+    name: Analisar com SonarQube
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Rodar testes e gerar cobertura
+        run: npm test -- --code-coverage --watch=false
+
+      - name: Instalar SonarScanner
+        run: npm install -D sonar-scanner
+
+      - name: Executar SonarScanner
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          sonar-scanner \
+          -Dsonar.projectKey=Hackathon-Caixa-2025 \
+          -Dsonar.organization=Gabriel Damico \
+          -Dsonar.sources=src \
+          -Dsonar.exclusions=**/*.spec.ts,**/app.routes.ts \
+          -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=$SONAR_TOKEN
