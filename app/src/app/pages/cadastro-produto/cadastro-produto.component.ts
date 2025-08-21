@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
-import { ButtonComponent } from '../../components/button/button.component';
-import { ProdutosService } from '../../services/api/produtos/produtos.service';
-import { SalvarProdutoDTO } from '../../models/Produto';
-import { ToastService } from '../../services/libs/toast/toast.service';
 import { Router } from '@angular/router';
+import { NgxMaskDirective } from 'ngx-mask';
 import { finalize } from 'rxjs';
+import { ButtonComponent } from '../../components/button/button.component';
+import { SalvarProdutoDTO } from '../../models/Produto';
+import { ProdutosService } from '../../services/api/produtos/produtos.service';
+import { ToastService } from '../../services/libs/toast/toast.service';
 
 @Component({
   selector: 'app-cadastro-produto',
