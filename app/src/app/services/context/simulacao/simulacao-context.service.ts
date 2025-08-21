@@ -18,4 +18,12 @@ export class SimulacaoContextService {
   setRespostaSimulacao(respostaSimulacao: RespostaSimulacaoDTO | null) {
     this._respostaSimulacao.set(respostaSimulacao);
   }
+
+  limparSolicitacaoSimulacao() {
+    this._solicitacaoSimulacao.set(null);
+  }
+
+  limparRespostaSimulacao() {
+    this._respostaSimulacao.set(null);
+  }
 }

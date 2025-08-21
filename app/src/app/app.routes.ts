@@ -5,6 +5,7 @@ import { ResumoSimulacaoComponent } from './pages/resumo-simulacao/resumo-simula
 import { DetalhamentoParcelasComponent } from './pages/detalhamento-parcelas/detalhamento-parcelas.component';
 import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
 import { TelaInicialComponent } from './pages/tela-inicial/tela-inicial.component';
+import { SimulacaoProviderComponent } from './components/simulacao-provider/simulacao-provider.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,7 @@ export const routes: Routes = [
   },
   {
     path: 'simulacao',
+    component: SimulacaoProviderComponent,
     children: [
       { path: '', loadComponent: () => import('./pages/simulacao/simulacao.component').then(m => m.SimulacaoComponent), data: { title: 'Simulação' } },
       {

@@ -27,7 +27,7 @@ import { ToastService } from '../../services/libs/toast/toast.service';
   styleUrl: './resumo-simulacao.component.css',
 })
 export class ResumoSimulacaoComponent implements OnInit {
-  isLoading = true;
+  isLoading = false;
   isSimulacaoComSucesso = false;
   mostrarResumo = false;
   resumoSimulacao: RespostaSimulacaoDTO;
@@ -40,15 +40,23 @@ export class ResumoSimulacaoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const simulacao = this.simulacaoContext.solicitacaoSimulacao();
-    if (!simulacao) {
+    const respostaSimulacao = this.simulacaoContext.respostaSimulacao();
+
+    if (respostaSimulacao) {
+      this.resumoSimulacao = respostaSimulacao;
+      this.mostrarResumo = true;
+      return;
+    }
+
+    const solicitacaoSimulacao = this.simulacaoContext.solicitacaoSimulacao();
+    if (!solicitacaoSimulacao) {
       this.toast.erro('Erro ao visualizar simulação. Tente novamente mais tarde');
       this.router.navigate(['/']);
       return;
     }
 
     this.isLoading = true;
-    this.simulacaoService.simular(simulacao).subscribe({
+    this.simulacaoService.simular(solicitacaoSimulacao).subscribe({
       next: data => {
         this.resumoSimulacao = data;
         this.simulacaoContext.setRespostaSimulacao(data);
@@ -68,7 +76,6 @@ export class ResumoSimulacaoComponent implements OnInit {
   }
 
   irParaHome() {
-    this.simulacaoContext.setRespostaSimulacao(null);
     this.router.navigate(['/']);
   }
 }

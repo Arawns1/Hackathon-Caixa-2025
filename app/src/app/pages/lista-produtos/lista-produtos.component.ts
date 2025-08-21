@@ -5,7 +5,6 @@ import { CardProdutoComponent } from '../../components/card-produto/card-produto
 import { ProdutoDTO } from '../../models/Produto';
 import { ProdutosService } from '../../services/api/produtos/produtos.service';
 import { ProdutosContextService } from '../../services/context/produtos/produtos-context.service';
-import { SimulacaoContextService } from '../../services/context/simulacao/simulacao-context.service';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -20,7 +19,6 @@ export class ListaProdutosComponent implements OnInit {
   constructor(
     private produtosService: ProdutosService,
     private produtoContext: ProdutosContextService,
-    private simulacaoContext: SimulacaoContextService,
     private router: Router,
   ) {}
 
@@ -33,7 +31,6 @@ export class ListaProdutosComponent implements OnInit {
         this.isLoading = false;
       },
     });
-    this.simulacaoContext.setRespostaSimulacao(null);
   }
 
   handleProdutoSelecionado(produtoSelecionado: ProdutoDTO) {
