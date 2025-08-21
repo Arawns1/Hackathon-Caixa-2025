@@ -16,7 +16,7 @@ export class LoadingSimulacaoComponent implements OnInit {
     'Isso está demorando um pouco mais que o esperado, por favor aguarde...',
   ];
   mensagemAtual = this.mensagensLoading[0];
-  src = 'https://lottie.host/9d205f1b-49b8-4c83-ba10-b4295e5d67a4/KjBYsGYgM0.lottie';
+  src = 'assets/media/loading.lottie';
 
   stopInterval!: () => void;
 
