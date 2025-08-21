@@ -1,20 +1,23 @@
 <div
+  data-test-id="card-produto"
   class="bg-card text-white px-4 pt-6 pb-5 rounded-lg shadow-lg flex flex-col items-start gap-5"
   (click)="selecionarProduto()"
 >
-  <h3 class="font-caixa font-semibold text-xl">{{ produto.nome }}</h3>
+  <h3 data-test-id="produto-nome" class="font-caixa font-semibold text-xl">{{ produto.nome }}</h3>
   <div class="flex flex-col gap-2 w-full">
     <div class="w-full flex flex-row justify-between items-center">
       <span>Taxas a partir de</span>
-      <span class="font-semibold text-end">{{ produto.taxa_anual | percent: '1.2-2' }} ao ano</span>
+      <span data-test-id="produto-taxa" class="font-semibold text-end"
+        >{{ produto.taxa_anual | percent: '1.2-2' }} ao ano</span
+      >
     </div>
     <div class="w-full flex flex-row justify-between items-center">
       <span>Para pagar em</span>
-      <span class="text-end">até {{ produto.prazo_maximo }}x</span>
+      <span data-test-id="produto-prazo" class="text-end">até {{ produto.prazo_maximo }}x</span>
     </div>
   </div>
 
   <div class="w-full flex flex-row justify-end items-center">
-    <app-button [label]="'Simular Agora'" />
+    <app-button [label]="'Simular Agora'" data-test-id="btn-simular" />
   </div>
 </div>

@@ -1,9 +1,11 @@
 <header
   *ngIf="showHeader"
+  data-test-id="header"
   class="text-white flex flex-row justify-between items-end bg-background flex-1 h-20 px-5 py-3 border-border border-b-2 sticky top-0 shadow-md"
 >
   <div class="w-full flex flex-row justify-between items-center">
     <button
+      data-test-id="btn-voltar"
       class="h-10 w-10 flex items-center justify-center bg-light-gray p-2 rounded-full hover:cursor-pointer hover:bg-background/80"
       (click)="voltarPagina()"
     >
@@ -13,7 +15,7 @@
         fontIcon="arrow_back"
       ></mat-icon>
     </button>
-    <h4 class="font-caixa font-semibold text-xl">{{ titulo }}</h4>
+    <h4 data-test-id="titulo-header" class="font-caixa font-semibold text-xl">{{ titulo }}</h4>
     <div class="h-10 w-10 flex items-center justify-center p-2 rounded-full"></div>
   </div>
 </header>

@@ -1,11 +1,12 @@
-<div class="px-5 flex flex-col gap-8 mt-6 pb-12 h-full">
-  <h2 class="text-white font-caixa font-semibold text-2xl">
+<div class="px-5 flex flex-col gap-8 mt-6 pb-12 h-full" data-test-id="lista-produtos-container">
+  <h2 class="text-white font-caixa font-semibold text-2xl" data-test-id="titulo">
     Faça um empréstimo que combina com sua necessidade
   </h2>
 
   <div
     *ngIf="isLoading; else listaProdutos"
     class="flex justify-center items-center flex-col gap-2 h-full flex-1"
+    data-test-id="loading"
   >
     <div
       class="w-12 h-12 border-4 border-t-primary border-gray-200 rounded-full animate-spin"
@@ -14,11 +15,12 @@
   </div>
 
   <ng-template #listaProdutos>
-    <div class="flex flex-col gap-6">
+    <div class="flex flex-col gap-6" data-test-id="produtos-lista">
       <app-card-produto
         *ngFor="let produto of produtos"
         [produto]="produto"
         (onProdutoSelecionado)="handleProdutoSelecionado($event)"
+        data-test-id="produto-item"
       ></app-card-produto>
     </div>
   </ng-template>

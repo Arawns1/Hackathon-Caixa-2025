@@ -1,22 +1,31 @@
 <ng-container *ngIf="isLoading">
-  <div class="flex h-full w-full flex-col items-center justify-center pb-32">
-    <app-loading-simulacao />
+  <div
+    class="flex h-full w-full flex-col items-center justify-center pb-32"
+    data-test-id="loading-container"
+  >
+    <app-loading-simulacao data-test-id="loading-simulacao" />
   </div>
 </ng-container>
 
 <ng-container *ngIf="isSimulacaoComSucesso">
-  <div class="flex h-full w-full flex-col items-center justify-center pb-32">
-    <app-sucesso-simulacao />
+  <div
+    class="flex h-full w-full flex-col items-center justify-center pb-32"
+    data-test-id="sucesso-container"
+  >
+    <app-sucesso-simulacao data-test-id="sucesso-simulacao" />
   </div>
 </ng-container>
 
 <ng-container *ngIf="mostrarResumo">
-  <div class="px-5 flex flex-col gap-8 h-full pb-24">
+  <div class="px-5 flex flex-col gap-8 h-full pb-24" data-test-id="resumo-container">
     <div class="flex flex-col w-full gap-3">
-      <h2 class="font-caixa font-semibold text-2xl mt-4 m-0 p-0">
+      <h2 class="font-caixa font-semibold text-2xl mt-4 m-0 p-0" data-test-id="resumo-titulo">
         Resumo da simulação do {{ resumoSimulacao.produto.nome }} no valor de&nbsp;
-        <span class="font-caixa font-semibold text-2xl text-primary leading-none"
-          >{{
+        <span
+          class="font-caixa font-semibold text-2xl text-primary leading-none"
+          data-test-id="resumo-valor"
+        >
+          {{
             resumoSimulacao.resultado_simulacao.valor_solicitado
               | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
           }}
@@ -25,93 +34,124 @@
     </div>
     <div class="flex flex-col flex-1 justify-between">
       <div class="flex flex-col flex-1 gap-8 justify-start items-start">
-        <div id="resumo-simulacao" class="w-full flex flex-col gap-4">
+        <div
+          id="resumo-simulacao"
+          class="w-full flex flex-col gap-4"
+          data-test-id="resumo-simulacao"
+        >
           <div class="w-full flex flex-col gap-6">
-            <div id="total-em-parcelas" class="w-full flex flex-row justify-between items-start">
+            <div
+              id="total-em-parcelas"
+              class="w-full flex flex-row justify-between items-start"
+              data-test-id="total-em-parcelas"
+            >
               <span>Você pagará</span>
               <div class="flex flex-col items-end">
-                <span class="font-semibold"
-                  >{{ resumoSimulacao.resultado_simulacao.prazo }}x
+                <span class="font-semibold" data-test-id="parcela-mensal">
+                  {{ resumoSimulacao.resultado_simulacao.prazo }}x
                   {{
                     resumoSimulacao.resultado_simulacao.parcela_mensal
                       | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
-                  }}</span
-                >
+                  }}
+                </span>
                 <a
                   routerLink="/simulacao/detalhamento-parcelas"
                   class="font-light text-primary-light underline"
+                  data-test-id="link-ver-parcelas"
                 >
                   Ver parcelas
                 </a>
               </div>
             </div>
 
-            <div id="taxa-efetiva-mensal" class="w-full flex flex-row justify-between items-start">
+            <div
+              id="taxa-efetiva-mensal"
+              class="w-full flex flex-row justify-between items-start"
+              data-test-id="taxa-efetiva-mensal"
+            >
               <span>Taxa efetiva</span>
               <div class="flex flex-col items-end">
-                <span class="font-semibold">{{
-                  resumoSimulacao.resultado_simulacao.taxa_efetiva_mensal | percent: '1.2-2'
-                }}</span>
+                <span class="font-semibold" data-test-id="valor-taxa-efetiva">
+                  {{ resumoSimulacao.resultado_simulacao.taxa_efetiva_mensal | percent: '1.2-2' }}
+                </span>
                 <span class="font-light">ao mês</span>
               </div>
             </div>
 
-            <div id="taxa-anual" class="w-full flex flex-row justify-between items-start">
+            <div
+              id="taxa-anual"
+              class="w-full flex flex-row justify-between items-start"
+              data-test-id="taxa-anual"
+            >
               <span>Taxa anual</span>
               <div class="flex flex-col items-end">
-                <span class="font-semibold">{{
-                  resumoSimulacao.produto.taxa_anual | percent: '1.2-2'
-                }}</span>
+                <span class="font-semibold" data-test-id="valor-taxa-anual">
+                  {{ resumoSimulacao.produto.taxa_anual | percent: '1.2-2' }}
+                </span>
                 <span class="font-light">ao ano</span>
               </div>
             </div>
           </div>
-          <app-divider />
+          <app-divider data-test-id="divider" />
           <div class="w-full flex flex-col gap-2">
             <div
               id="total-juros"
               class="w-full flex flex-row justify-between items-start text-muted font-light"
+              data-test-id="total-juros"
             >
               <span>Juros totais</span>
               <div class="flex flex-col items-end">
-                <span>{{
-                  resumoSimulacao.resultado_simulacao.valor_total_em_juros
-                    | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
-                }}</span>
+                <span data-test-id="valor-total-juros">
+                  {{
+                    resumoSimulacao.resultado_simulacao.valor_total_em_juros
+                      | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+                  }}
+                </span>
               </div>
             </div>
 
             <div
               id="total-amortizacoes"
               class="w-full flex flex-row justify-between items-start text-muted font-light"
+              data-test-id="total-amortizacoes"
             >
               <span>Total em amortizações</span>
               <div class="flex flex-col items-end">
-                <span>{{
-                  resumoSimulacao.resultado_simulacao.valor_total_amortizado
-                    | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
-                }}</span>
+                <span data-test-id="valor-total-amortizacoes">
+                  {{
+                    resumoSimulacao.resultado_simulacao.valor_total_amortizado
+                      | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+                  }}
+                </span>
               </div>
             </div>
 
             <div
               id="total-a-pagar"
               class="w-full flex flex-row justify-between items-start font-semibold"
+              data-test-id="total-a-pagar"
             >
               <span>Total a Pagar</span>
               <div class="flex flex-col items-end">
-                <span>{{
-                  resumoSimulacao.resultado_simulacao.valor_total_com_juros
-                    | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
-                }}</span>
+                <span data-test-id="valor-total-a-pagar">
+                  {{
+                    resumoSimulacao.resultado_simulacao.valor_total_com_juros
+                      | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
+                  }}
+                </span>
               </div>
             </div>
           </div>
         </div>
 
-        <div id="infos-adicionais" class="flex flex-col gap-4 w-full">
+        <div
+          id="infos-adicionais"
+          class="flex flex-col gap-4 w-full"
+          data-test-id="infos-adicionais"
+        >
           <div
             class="flex flex-row justify-start items-center gap-3 border-2 border-border rounded-md px-2 py-4"
+            data-test-id="info-conta-caixa"
           >
             <div
               class="w-12 h-12 bg-border/70 rounded-full flex flex-col items-center justify-center text-primary/80"
@@ -121,23 +161,23 @@
               >
             </div>
             <div class="flex-1">
-              <span class="text-sm leading-none"
-                >Ao contratar, o dinheiro será depositado na sua
-                <span class="font-semibold text-primary-light">Conta Caixa</span
-                >&nbsp;imediatamente.</span
-              >
+              <span class="text-sm leading-none">
+                Ao contratar, o dinheiro será depositado na sua
+                <span class="font-semibold text-primary-light">Conta Caixa</span> imediatamente.
+              </span>
             </div>
           </div>
 
           <div
             class="flex flex-row justify-start items-center gap-3 border-2 border-border rounded-md px-2 py-4"
+            data-test-id="info-ajuda"
           >
             <div
               class="w-12 h-12 bg-border/70 rounded-full flex flex-col items-center justify-center text-primary/80"
             >
-              <mat-icon class="material-icons-outlined" aria-label="Simbolo de interrogação">
-                help_outline
-              </mat-icon>
+              <mat-icon class="material-icons-outlined" aria-label="Simbolo de interrogação"
+                >help_outline</mat-icon
+              >
             </div>
             <div class="flex-1">
               <span class="text-sm leading-none">Ficou com alguma dúvida?&nbsp;&nbsp;</span>
@@ -145,6 +185,7 @@
                 href="https://www.caixa.gov.br/atendimento/Paginas/default.aspx"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-test-id="link-contato"
               >
                 <span class="text-sm text-primary-light underline">Entre em contato conosco</span>
               </a>
@@ -152,7 +193,12 @@
           </div>
         </div>
       </div>
-      <app-button [label]="'Fechar'" classes="w-full mt-8" (click)="irParaHome()" />
+      <app-button
+        [label]="'Fechar'"
+        classes="w-full mt-8"
+        (click)="irParaHome()"
+        data-test-id="btn-fechar"
+      />
     </div>
   </div>
 </ng-container>

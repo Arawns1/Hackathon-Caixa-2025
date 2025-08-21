@@ -12,4 +12,8 @@ export class ProdutosContextService {
   setProdutoSelecionado(produto: ProdutoDTO) {
     this._produtoSelecionado.set(produto);
   }
+
+  limparProdutoSelecionado() {
+    this._produtoSelecionado.set(null);
+  }
 }

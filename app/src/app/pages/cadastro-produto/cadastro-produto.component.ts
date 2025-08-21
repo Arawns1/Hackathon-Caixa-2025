@@ -7,6 +7,7 @@ import { ProdutosService } from '../../services/api/produtos/produtos.service';
 import { SalvarProdutoDTO } from '../../models/Produto';
 import { ToastService } from '../../services/libs/toast/toast.service';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro-produto',
@@ -18,8 +19,8 @@ export class CadastroProdutoComponent {
   isLoading = false;
   form = new FormGroup({
     nome: new FormControl<string>('', [Validators.required, Validators.maxLength(200)]),
-    taxa_anual: new FormControl<number>(undefined!, [Validators.required]),
-    prazo_maximo: new FormControl<number>(undefined!, [
+    taxa_anual: new FormControl<number>(null!, [Validators.required]),
+    prazo_maximo: new FormControl<number>(null!, [
       Validators.required,
       Validators.min(1),
       Validators.max(999),
@@ -35,17 +36,17 @@ export class CadastroProdutoComponent {
   submit() {
     if (!this.form.valid) return this.form.markAllAsTouched();
     this.isLoading = true;
-    this.produtoService.salvar(this.form.value as SalvarProdutoDTO).subscribe({
-      next: () => {
-        this.toast.sucesso('Produto cadastrado com sucesso!');
-        this.router.navigate(['/produtos']);
-      },
-      error: () => {
-        this.toast.erro('Erro ao cadastrar. Tente novamente mais tarde');
-      },
-      complete: () => {
-        this.isLoading = false;
-      },
-    });
+    this.produtoService
+      .salvar(this.form.value as SalvarProdutoDTO)
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe({
+        next: () => {
+          this.toast.sucesso('Produto cadastrado com sucesso!');
+          this.router.navigate(['/produtos']);
+        },
+        error: () => {
+          this.toast.erro('Erro ao cadastrar. Tente novamente mais tarde');
+        },
+      });
   }
 }

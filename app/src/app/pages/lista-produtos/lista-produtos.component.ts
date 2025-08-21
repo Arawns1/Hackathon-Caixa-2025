@@ -5,6 +5,7 @@ import { CardProdutoComponent } from '../../components/card-produto/card-produto
 import { ProdutoDTO } from '../../models/Produto';
 import { ProdutosService } from '../../services/api/produtos/produtos.service';
 import { ProdutosContextService } from '../../services/context/produtos/produtos-context.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -24,13 +25,13 @@ export class ListaProdutosComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.produtosService.obter().subscribe({
-      next: data => (this.produtos = data),
-      error: err => console.error(err),
-      complete: () => {
-        this.isLoading = false;
-      },
-    });
+    this.produtosService
+      .obter()
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe({
+        next: data => (this.produtos = data),
+        error: err => console.error(err),
+      });
   }
 
   handleProdutoSelecionado(produtoSelecionado: ProdutoDTO) {

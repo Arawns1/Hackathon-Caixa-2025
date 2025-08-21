@@ -13,8 +13,8 @@ const db = database.init("./db.sqlite");
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
-// Lista produtos
 
+// Lista produtos
 app.get("/produtos", (req, res) => {
   const produtos = db.prepare("SELECT * FROM produto").all();
   res.json(produtos);
@@ -95,22 +95,20 @@ app.post("/simulacoes", (req, res, next) => {
     });
   }
 
-  setTimeout(() => {
-    res.status(200).json({
-      id: `${produto.id}-${valor_solicitado}-${prazo}`,
-      produto,
-      resultado_simulacao: {
-        valor_solicitado,
-        prazo,
-        taxa_efetiva_mensal: taxaMensal,
-        parcela_mensal: truncarCasasDecimais(parcela),
-        valor_total_com_juros: truncarCasasDecimais(parcela * prazo),
-        valor_total_amortizado: parseFloat(valor_solicitado.toFixed(2)),
-        valor_total_em_juros: truncarCasasDecimais(valor_total_em_juros),
-        parcelas,
-      },
-    });
-  }, 2500);
+  res.status(200).json({
+    id: `${produto.id}-${valor_solicitado}-${prazo}`,
+    produto,
+    resultado_simulacao: {
+      valor_solicitado,
+      prazo,
+      taxa_efetiva_mensal: taxaMensal,
+      parcela_mensal: truncarCasasDecimais(parcela),
+      valor_total_com_juros: truncarCasasDecimais(parcela * prazo),
+      valor_total_amortizado: parseFloat(valor_solicitado.toFixed(2)),
+      valor_total_em_juros: truncarCasasDecimais(valor_total_em_juros),
+      parcelas,
+    },
+  });
 });
 
 function calcularParcelaPrice(valorSolicitado, taxa, prazo) {
