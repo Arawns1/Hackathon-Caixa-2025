@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class CadastroProdutoComponent {
   isLoading = false;
   form = new FormGroup({
-    nome: new FormControl<string>('', [Validators.required, Validators.maxLength(255)]),
+    nome: new FormControl<string>('', [Validators.required, Validators.maxLength(200)]),
     taxa_anual: new FormControl<number>(undefined!, [Validators.required]),
     prazo_maximo: new FormControl<number>(undefined!, [
       Validators.required,

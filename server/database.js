@@ -8,10 +8,10 @@ function init(path = "db.sqlite") {
   // cria tabela
   db.exec(`
     CREATE TABLE IF NOT EXISTS produto (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      nome TEXT NOT NULL,
-      taxa_anual REAL,
-      prazo_maximo INTEGER
+      id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+      nome varchar(200) NOT NULL,
+      taxa_anual numeric(10,9) NOT NULL,
+      prazo_maximo smallint NOT NULL
     );
   `);
 
@@ -22,11 +22,11 @@ function init(path = "db.sqlite") {
       "INSERT INTO produto (nome, taxa_anual, prazo_maximo) VALUES (?, ?, ?)"
     );
     const produtos = [
-      ["Empréstimo Pessoal", 23.236, 48],
-      ["Crédito Consignado", 12.2, 72],
-      ["Financiamento Imobiliário", 9.0, 360],
-      ["Crédito Automotivo", 14.7, 60],
-      ["Empréstimo Empresarial", 16.3, 120],
+      ["Empréstimo Pessoal", 0.23236, 48],
+      ["Crédito Consignado", 0.122, 72],
+      ["Financiamento Imobiliário", 0.9, 360],
+      ["Crédito Automotivo", 0.147, 60],
+      ["Empréstimo Empresarial", 0.163, 120],
     ];
     const insertMany = db.transaction((produtos) => {
       for (const p of produtos) stmt.run(...p);

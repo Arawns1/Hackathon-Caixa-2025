@@ -11,5 +11,4 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class ParcelaItemComponent {
   @Input() parcela: ParcelaSimulacaoDTO;
-  @Input() numeroParcela: number;
 }
