@@ -12,4 +12,5 @@ export class ButtonComponent {
   @Input() classes = '';
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
   @Input() disabled: boolean = false;
+  @Input() isLoading: boolean = false;
 }

@@ -89,6 +89,12 @@
       </div>
     </div>
 
-    <app-button [label]="'Salvar'" classes="w-full mt-8" type="submit" [disabled]="isLoading" />
+    <app-button
+      [label]="'Salvar'"
+      classes="w-full mt-8"
+      type="submit"
+      [disabled]="isLoading"
+      [isLoading]="isLoading"
+    />
   </form>
 </div>
