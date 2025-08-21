@@ -26,13 +26,14 @@ export class DetalhamentoParcelasComponent implements OnInit {
     private toast: ToastService,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const respostaSimulacao = this.simulacaoContext.respostaSimulacao();
     if (!respostaSimulacao) {
       this.toast.erro('Erro ao visualizar parcelas. Tente novamente mais tarde');
-      return this.router.navigate(['/']);
+      this.router.navigate(['/']);
+      return;
     }
     this.resumoSimulacao = respostaSimulacao;
-    return (this.parcelas = respostaSimulacao.resultado_simulacao.parcelas);
+    this.parcelas = respostaSimulacao.resultado_simulacao.parcelas;
   }
 }

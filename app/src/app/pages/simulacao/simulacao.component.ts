@@ -43,19 +43,20 @@ export class SimulacaoComponent implements OnInit {
     private toast: ToastService,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.simulacaoContext.limparRespostaSimulacao();
     const produtoContexto = this.produtoContext.produtoSelecionado();
     if (!produtoContexto) {
       this.toast.erro('Erro ao realizar simulação. Tente novamente mais tarde');
-      return this.router.navigate(['']);
+      this.router.navigate(['']);
+      return;
     }
     this.produto = produtoContexto;
-    return (this.form = new FormGroup({
+    this.form = new FormGroup({
       id_produto: new FormControl(this.produto.id, [Validators.required]),
       valor_solicitado: new FormControl(1000.0, [Validators.required, Validators.min(1)]),
       prazo: new FormControl('', [Validators.required, Validators.min(1), Validators.max(999)]),
-    }));
+    });
   }
 
   get parcelas(): number[] {
