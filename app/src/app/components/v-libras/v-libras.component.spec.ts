@@ -35,7 +35,7 @@ describe('VLibrasComponent', () => {
   });
 
   it('deve definir isDesktop como false se window.innerWidth < 1024', () => {
-    innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1200);
+    innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1000);
     component.ngOnInit();
     expect(component.isDesktop).toBeFalse();
   });
