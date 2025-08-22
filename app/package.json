@@ -12,6 +12,10 @@
     "test:coverage": "ng test --code-coverage --watch=false"
   },
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Arawns1/Hackathon-Caixa-2025.git"
+  },
   "dependencies": {
     "@angular/animations": "^19.2.14",
     "@angular/cdk": "^19.2.19",
