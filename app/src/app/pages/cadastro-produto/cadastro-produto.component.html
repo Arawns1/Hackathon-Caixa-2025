@@ -13,15 +13,18 @@
   >
     <div class="flex flex-col flex-1 justify-start gap-6">
       <div id="nome-produto" class="w-full flex flex-col gap-2">
-        <label data-test-id="label-nome">Nome do produto*</label>
+        <label for="input-nome" data-test-id="label-nome">Nome do produto*</label>
         <input
           class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
           placeholder="Digite o nome do produto"
           formControlName="nome"
+          maxlength="200"
+          required="true"
           [ngClass]="{
             'border-red-500': form.get('nome')?.touched && form.get('nome')?.invalid,
           }"
           data-test-id="input-nome"
+          id="input-nome"
         />
         <small
           class="text-red-500"
@@ -35,7 +38,14 @@
           *ngIf="form.get('nome')?.touched && form.get('nome')?.hasError('maxlength')"
           data-test-id="error-nome-maxlength"
         >
-          Máximo de 255 caracteres
+          Máximo de 200 caracteres
+        </small>
+        <small
+          class="text-red-500"
+          *ngIf="form.get('nome')?.touched && form.get('nome')?.hasError('pattern')"
+          data-test-id="error-nome-blank"
+        >
+          Nome não pode ser vazio ou conter apenas espaços
         </small>
       </div>
 

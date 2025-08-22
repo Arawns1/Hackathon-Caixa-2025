@@ -14,7 +14,12 @@
     ' parcelas'
   "
 >
-  <h3 data-test-id="produto-nome" class="font-caixa font-semibold text-xl">{{ produto.nome }}</h3>
+  <h3
+    data-test-id="produto-nome"
+    class="font-caixa font-semibold text-xl line-clamp-2 overflow-hidden break-all"
+  >
+    {{ produto.nome }}
+  </h3>
   <div class="flex flex-col gap-3 w-full">
     <div class="w-full flex flex-row justify-between items-start">
       <span>Taxas a partir de</span>

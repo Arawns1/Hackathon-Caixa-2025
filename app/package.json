@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
     "@lottiefiles/dotlottie-web": "^0.50.0",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/postcss": "^4.1.12",
     "angular-vlibras": "^1.0.1",
     "lucide-angular": "^0.540.0",

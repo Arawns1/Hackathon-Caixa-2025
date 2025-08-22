@@ -18,10 +18,15 @@ import { ToastService } from '../../services/libs/toast/toast.service';
 export class CadastroProdutoComponent {
   isLoading = false;
   form = new FormGroup({
-    nome: new FormControl<string>('', [Validators.required, Validators.maxLength(200)]),
+    nome: new FormControl<string>('', [
+      Validators.required,
+      Validators.pattern(/\S+/),
+      Validators.maxLength(200),
+    ]),
     taxa_anual: new FormControl<number>(null!, [Validators.required]),
     prazo_maximo: new FormControl<number>(null!, [
       Validators.required,
+
       Validators.min(1),
       Validators.max(999),
     ]),
