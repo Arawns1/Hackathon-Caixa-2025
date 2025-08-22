@@ -10,7 +10,7 @@ import { AngularVlibras } from 'angular-vlibras';
 })
 export class VLibrasComponent {
   isDesktop = false;
-  private readonly DESKTOP_WIDTH = 1280;
+  private readonly DESKTOP_WIDTH = 1024;
 
   ngOnInit() {
     this.verificarTamanhoDaTela();

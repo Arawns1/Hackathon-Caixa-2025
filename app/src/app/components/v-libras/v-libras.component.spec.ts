@@ -28,13 +28,13 @@ describe('VLibrasComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deve definir isDesktop como true se window.innerWidth >= 1280', () => {
-    innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1300);
+  it('deve definir isDesktop como true se window.innerWidth >= 1024', () => {
+    innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1280);
     component.ngOnInit();
     expect(component.isDesktop).toBeTrue();
   });
 
-  it('deve definir isDesktop como false se window.innerWidth < 1280', () => {
+  it('deve definir isDesktop como false se window.innerWidth < 1024', () => {
     innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1200);
     component.ngOnInit();
     expect(component.isDesktop).toBeFalse();
