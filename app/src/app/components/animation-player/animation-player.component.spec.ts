@@ -22,7 +22,7 @@ describe('AnimationPlayerComponent', () => {
   });
 
   it('deve vincular a propriedade src corretamente', () => {
-    const caminhoTeste = 'assets/test-animation.lottie';
+    const caminhoTeste = 'assets/media/loading.lottie';
     component.src = caminhoTeste;
     fixture.detectChanges();
     const dotLottieDebugEl = fixture.debugElement.query(

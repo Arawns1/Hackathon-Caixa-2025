@@ -1,27 +1,20 @@
+import { CommonModule, CurrencyPipe, registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { CommonModule, CurrencyPipe } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
-import { provideRouter } from '@angular/router';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { By } from '@angular/platform-browser';
+import { Router, RouterModule, provideRouter } from '@angular/router';
+import { asyncScheduler, of } from 'rxjs';
+import { observeOn } from 'rxjs/operators';
 import { ButtonComponent } from '../../components/button/button.component';
 import { DividerComponent } from '../../components/divider/divider.component';
 import { LoadingSimulacaoComponent } from '../../components/loading-simulacao/loading-simulacao.component';
 import { SucessoSimulacaoComponent } from '../../components/sucesso-simulacao/sucesso-simulacao.component';
+import { RespostaSimulacaoDTO, SimularEmprestimoDTO } from '../../models/Simulacao';
 import { SimulacaoService } from '../../services/api/simulacao/simulacao.service';
 import { SimulacaoContextService } from '../../services/context/simulacao/simulacao-context.service';
 import { ToastService } from '../../services/libs/toast/toast.service';
 import { ResumoSimulacaoComponent } from './resumo-simulacao.component';
-import { provideHttpClient } from '@angular/common/http';
-import { provideToastr } from 'ngx-toastr';
-import { RespostaSimulacaoDTO, SimularEmprestimoDTO } from '../../models/Simulacao';
-import { of, asyncScheduler } from 'rxjs';
-import { observeOn } from 'rxjs/operators';
-import localePt from '@angular/common/locales/pt';
-import { registerLocaleData } from '@angular/common';
-import { LOCALE_ID } from '@angular/core';
-import { By } from '@angular/platform-browser';
 
 describe('ResumoSimulacaoComponent', () => {
   let component: ResumoSimulacaoComponent;

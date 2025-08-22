@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { CardProdutoComponent } from '../../components/card-produto/card-produto.component';
 import { ProdutoDTO } from '../../models/Produto';
 import { ProdutosService } from '../../services/api/produtos/produtos.service';
 import { ProdutosContextService } from '../../services/context/produtos/produtos-context.service';
-import { finalize } from 'rxjs';
+import { ToastService } from '../../services/libs/toast/toast.service';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -21,16 +22,21 @@ export class ListaProdutosComponent implements OnInit {
     private produtosService: ProdutosService,
     private produtoContext: ProdutosContextService,
     private router: Router,
+    private toast: ToastService,
   ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
+
     this.produtosService
       .obter()
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe({
         next: data => (this.produtos = data),
-        error: err => console.error(err),
+        error: err => {
+          this.toast.erro('Erro ao listar produtos. Tente novamente mais tarde');
+          this.router.navigate(['/']);
+        },
       });
   }
 

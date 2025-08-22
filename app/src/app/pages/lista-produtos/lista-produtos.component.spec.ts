@@ -1,38 +1,46 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
-import { provideRouter } from '@angular/router';
-import { asyncScheduler, observeOn, of } from 'rxjs';
+import { provideHttpClient } from '@angular/common/http';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { provideRouter, Router } from '@angular/router';
+import { asyncScheduler, observeOn, of, throwError } from 'rxjs';
 import { CardProdutoComponent } from '../../components/card-produto/card-produto.component';
 import { ProdutosService } from '../../services/api/produtos/produtos.service';
 import { ProdutosContextService } from '../../services/context/produtos/produtos-context.service';
+import { ToastService } from '../../services/libs/toast/toast.service';
 import { ListaProdutosComponent } from './lista-produtos.component';
-import { provideHttpClient } from '@angular/common/http';
 
 describe('ListaProdutosComponent', () => {
   let component: ListaProdutosComponent;
   let fixture: ComponentFixture<ListaProdutosComponent>;
-  let produtosService: ProdutosService;
   let produtoContext: ProdutosContextService;
-
+  let produtosService: jasmine.SpyObj<ProdutosService>;
   const mockProdutos = [
     { id: 1, nome: 'Produto A', prazo_maximo: 5, taxa_anual: 0.1 },
     { id: 2, nome: 'Produto B', prazo_maximo: 10, taxa_anual: 0.2 },
   ];
+  let toast: jasmine.SpyObj<ToastService>;
+  let router: Router;
 
   beforeEach(async () => {
+    produtosService = jasmine.createSpyObj('ProdutosService', ['obter']);
+    produtosService.obter.and.returnValue(of(mockProdutos).pipe(observeOn(asyncScheduler)));
+    toast = jasmine.createSpyObj('ToastService', ['erro']);
     await TestBed.configureTestingModule({
       imports: [ListaProdutosComponent, CommonModule, CardProdutoComponent],
-      providers: [provideRouter([]), provideHttpClient(), ProdutosService, ProdutosContextService],
+      providers: [
+        provideRouter([]),
+        provideHttpClient(),
+        ProdutosContextService,
+        { provide: ProdutosService, useValue: produtosService },
+        { provide: ToastService, useValue: toast },
+      ],
     }).compileComponents();
 
+    router = TestBed.inject(Router);
     fixture = TestBed.createComponent(ListaProdutosComponent);
     component = fixture.componentInstance;
-    produtosService = TestBed.inject(ProdutosService);
     produtoContext = TestBed.inject(ProdutosContextService);
 
-    spyOn(produtosService, 'obter').and.returnValue(
-      of(mockProdutos).pipe(observeOn(asyncScheduler)),
-    );
     spyOn(produtoContext, 'setProdutoSelecionado');
     fixture.detectChanges();
   });
@@ -77,4 +85,20 @@ describe('ListaProdutosComponent', () => {
     expect(produtoContext.setProdutoSelecionado).toHaveBeenCalledWith(produtoSelecionado);
     expect(component['router'].navigate).toHaveBeenCalledWith(['/simulacao']);
   });
+
+  it('deve exibir toast de erro e redirecionar ao falhar ao carregar produtos', fakeAsync(() => {
+    spyOn(router, 'navigate');
+
+    produtosService.obter.and.returnValue(
+      throwError(() => new Error('Erro')).pipe(observeOn(asyncScheduler)),
+    );
+
+    component.ngOnInit();
+    tick();
+
+    expect(toast.erro).toHaveBeenCalledWith('Erro ao listar produtos. Tente novamente mais tarde');
+    expect(component.isLoading).toBeFalse();
+    expect(component.produtos.length).toBe(0);
+    expect(router.navigate).toHaveBeenCalledWith(['/']);
+  }));
 });
