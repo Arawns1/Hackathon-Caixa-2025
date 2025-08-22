@@ -4,11 +4,38 @@
 
 > **Código também disponível em:** [https://github.com/Arawns1/Hackathon-Caixa-2025](https://github.com/Arawns1/Hackathon-Caixa-2025)
 
-# 🎯 Objetivo Principal
+> **Versão implantada em Produção:** [https://hackathon-caixa-2025.vercel.app/](https://hackathon-caixa-2025.vercel.app/)
+
+## 📋 Sumário
+
+- [App Simulação de Empréstimos](#app-simulação-de-empréstimos)
+  - [📋 Sumário](#-sumário)
+  - [🎯 Objetivo Principal](#-objetivo-principal)
+  - [📱 Funcionalidades](#-funcionalidades)
+  - [♿ Acessibilidade](#-acessibilidade)
+  - [📸 Visuais e Telas](#-visuais-e-telas)
+  - [🛠️ Tecnologias](#️-tecnologias)
+  - [🚀 Como Executar](#-como-executar)
+    - [Pré-requisitos](#pré-requisitos)
+    - [Instalação](#instalação)
+    - [Scripts de Inicialização](#scripts-de-inicialização)
+      - [`npm run start` - Produção](#npm-run-start---produção)
+      - [`npm run dev` - Desenvolvimento Local](#npm-run-dev---desenvolvimento-local)
+    - [Executar o Projeto](#executar-o-projeto)
+      - [🚀 **Recomendado: Versão Deployada**](#-recomendado-versão-deployada)
+      - [💻 **Desenvolvimento Local**](#-desenvolvimento-local)
+    - [🔧 Configurações](#-configurações)
+      - [Ambientes](#ambientes)
+      - [API](#api)
+    - [Deploy](#deploy)
+    - [🧪 Testes](#-testes)
+    - [📦 Build](#-build)
+
+## 🎯 Objetivo Principal
 
 Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos e compreendam claramente os valores e prazos mensais, Além disso foi implementado um fluxo de CI/CD que passa por análise do SonarQube, garantindo a qualidade do código e estando tudo certo é feito o deploy na Vercel de forma contínua e integrada.
 
-# 📱 Funcionalidades
+## 📱 Funcionalidades
 
 - Simulação de empréstimos
 - Cadastro de produtos
@@ -26,7 +53,7 @@ Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos
 - **Screen readers**: Compatível com leitores de tela
 - **Padrão WCAG 2.1 do W3C**: O projeto conta com nota 8.3 de acordo com o site accessMonitor em acessibilidade. [Confira Aqui!](https://accessmonitor.acessibilidade.gov.pt/results/https%3A%2F%2Fhackathon-caixa-2025.vercel.app%2F)
 
-# 📸 Visuais e Telas
+## 📸 Visuais e Telas
 
 🎨 [Link para o figma](https://www.figma.com/design/b4ZlK9P444YswDaCIQwfOD/HACKATHON-CAIXA---2025?node-id=0-1&t=gqtSSoOPRS5p5cdJ-1)
 
@@ -83,7 +110,7 @@ Para uso imediato, acesse a versão em produção: [https://hackathon-caixa-2025
 
 #### 💻 **Desenvolvimento Local**
 
-**⚠️ IMPORTANTE**: Para desenvolvimento local, é necessário executar a API localmente. A API está disponível no repositório: [https://github.com/Arawns1/Hackathon-Caixa-2025](https://github.com/Arawns1/Hackathon-Caixa-2025)
+**⚠️ IMPORTANTE**: Para desenvolvimento local, é necessário executar a API localmente. O passo a passo para rodar a local API está disponível no repositório: [https://github.com/Arawns1/Hackathon-Caixa-2025/tree/main/server](https://github.com/Arawns1/Hackathon-Caixa-2025/tree/main/server)
 
 ```bash
 # Primeira execução (produção)
@@ -95,14 +122,14 @@ npm run dev
 
 A aplicação estará disponível em: `http://localhost:4200`
 
-## 🔧 Configurações
+### 🔧 Configurações
 
-### Ambientes
+#### Ambientes
 
 - **Production**: `src/environments/environment.ts`
 - **Development**: `src/environments/environment.development.ts`
 
-### API
+#### API
 
 - **Hospedada**: `https://hackathon-caixa-2025.onrender.com`
 - **Local**: `http://localhost:3000`
@@ -112,7 +139,7 @@ A aplicação estará disponível em: `http://localhost:4200`
 - **Vercel**: [https://hackathon-caixa-2025.vercel.app/](https://hackathon-caixa-2025.vercel.app/)
 - **Local**: `http://localhost:4200`
 
-## 🧪 Testes
+### 🧪 Testes
 
 ```bash
 # Executar testes
@@ -125,7 +152,7 @@ npm run test:coverage
 npm run test:watch
 ```
 
-## 📦 Build
+### 📦 Build
 
 ```bash
 # Build de produção
