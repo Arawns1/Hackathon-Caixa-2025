@@ -11,5 +11,5 @@
     class="w-6 h-6 border-2 border-t-white border-gray-200 rounded-full animate-spin mr-2"
     aria-hidden="true"
   ></div>
-  <span [class.opacity-0]="isLoading">{{ label }}</span>
+  <span [style.display]="isLoading ? 'none' : 'inline'">{{ label }}</span>
 </button>

@@ -29,35 +29,35 @@ describe('VLibrasComponent', () => {
   });
 
   it('deve definir isDesktop como true se window.innerWidth >= 1280', () => {
-    innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1200);
+    innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1300);
     component.ngOnInit();
     expect(component.isDesktop).toBeTrue();
   });
 
   it('deve definir isDesktop como false se window.innerWidth < 1280', () => {
-    innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(800);
+    innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1200);
     component.ngOnInit();
     expect(component.isDesktop).toBeFalse();
   });
 
   it('deve atualizar isDesktop ao redimensionar a janela', () => {
-    innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1300);
+    innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1400);
     component.onResize();
     expect(component.isDesktop).toBeTrue();
 
-    innerWidthSpy.and.returnValue(500);
+    innerWidthSpy.and.returnValue(1000);
     component.onResize();
     expect(component.isDesktop).toBeFalse();
   });
 
   it('deve aplicar a classe hidden corretamente', () => {
-    innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(800);
+    innerWidthSpy = spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1000);
     component.ngOnInit();
     fixture.detectChanges();
     let vlibrasEl = fixture.debugElement.query(By.css('angular-vlibras'));
     expect(vlibrasEl.nativeElement.classList).toContain('hidden');
 
-    innerWidthSpy.and.returnValue(1200);
+    innerWidthSpy.and.returnValue(1300);
     component.ngOnInit();
     fixture.detectChanges();
     vlibrasEl = fixture.debugElement.query(By.css('angular-vlibras'));
