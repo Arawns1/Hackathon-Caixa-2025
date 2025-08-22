@@ -19,12 +19,11 @@ Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos
 
 ## ♿ Acessibilidade
 
-- **Conformidade com normas públicas**: Implementa padrões de acessibilidade conforme exigências para sites governamentais
+- **Conformidade com normas públicas**: Implementa padrões de acessibilidade conforme exigências para sites governamentais e entidades públicas
+- **VLibras**: Integra a ferramenta de tradução automática de Libras, permitindo que usuários surdos compreendam o conteúdo em linguagem de sinais.
 - **Responsividade**: Design adaptável para todos os dispositivos
 - **Navegação por teclado**: Suporte completo para navegação sem mouse
 - **Screen readers**: Compatível com leitores de tela
-- **Contraste**: Alto contraste para melhor legibilidade
-- **Semântica HTML**: Estrutura semântica adequada
 - **Padrão WCAG 2.1 do W3C**: O projeto conta com nota 8.3 de acordo com o site accessMonitor em acessibilidade. [Confira Aqui!](https://accessmonitor.acessibilidade.gov.pt/results/https%3A%2F%2Fhackathon-caixa-2025.vercel.app%2F)
 
 # 📸 Visuais e Telas
