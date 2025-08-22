@@ -1,28 +1,37 @@
-<div class="flex flex-col gap-12 justify-center items-center px-5 pt-24 pb-16 h-full gradient">
-  <div class="flex flex-col justify-center items-center gap-8">
-    <div class="w-52 flex flex-col items-center justify-center">
-      <img src="assets/media/logo-full-negativa.png" />
+<div class="flex flex-col min-h-screen gradient pb-4">
+  <div class="flex flex-1 flex-col gap-14 justify-center items-center px-5 pt-4">
+    <div class="flex flex-col justify-center items-center gap-8">
+      <div class="w-52 flex flex-col items-center justify-center">
+        <img src="assets/media/logo-full-negativa.png" alt="Logo da Caixa Econômica Federal" />
+      </div>
+      <h2 class="text-white font-caixa font-semibold text-2xl text-center max-w-[400px]">
+        Bem-vindo(a) ao App de
+        <span class="text-primary leading-relaxed">Simulações de Empréstimo</span>
+      </h2>
     </div>
-    <h2 class="text-white font-caixa font-semibold text-2xl text-center max-w-[400px]">
-      Bem-vindo(a) ao App de <span class="text-primary">Simulações de Empréstimo</span>
-    </h2>
+
+    <div class="grid grid-cols-2 gap-8">
+      <app-card-menu
+        [label]="'Realizar empréstimo'"
+        [icon]="'attach_money'"
+        (click)="redirecionar('/produtos')"
+        (keydown.enter)="redirecionar('/produtos')"
+        (keydown.space)="redirecionar('/produtos')"
+        tabindex="0"
+      ></app-card-menu>
+      <app-card-menu
+        [label]="'Cadastrar novo Produto'"
+        [icon]="'add'"
+        (click)="redirecionar('/produtos/cadastro')"
+        (keydown.enter)="redirecionar('/produtos/cadastro')"
+        (keydown.space)="redirecionar('/produtos/cadastro')"
+        tabindex="0"
+      ></app-card-menu>
+    </div>
   </div>
 
-  <div class="grid grid-cols-2 gap-8 flex-1">
-    <app-card-menu
-      [label]="'Realizar empréstimo'"
-      [icon]="'attach_money'"
-      [routerLink]="'/produtos'"
-    />
-    <app-card-menu
-      [label]="'Cadastrar novo Produto'"
-      [icon]="'add'"
-      [routerLink]="'/produtos/cadastro'"
-    />
-  </div>
-
-  <div class="flex flex-col font-light text-center text-placeholder">
+  <footer class="flex flex-col font-light text-center text-placeholder py-4">
     <span>Feito por Gabriel Damico (c158787)</span>
     <span>Hackathon Caixa - 2025</span>
-  </div>
+  </footer>
 </div>

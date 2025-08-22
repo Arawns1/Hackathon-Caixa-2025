@@ -1,20 +1,23 @@
-<div class="px-5 flex flex-col h-full pb-20" *ngIf="produtoContext.produtoSelecionado() as produto">
+<div
+  class="px-5 sm:px-6 md:lg:px-8 lg:px-10 flex flex-col h-full pb-12 max-w-3xl mx-auto"
+  *ngIf="produtoContext.produtoSelecionado() as produto"
+>
   <h2 data-test-id="titulo-produto" class="text-white font-caixa font-semibold text-2xl mt-6 mb-4">
     Simule seu {{ produto.nome }}
   </h2>
 
   <form
-    class="flex flex-col flex-1 justify-between"
+    class="flex flex-col flex-1 justify-between gap-6"
     [formGroup]="form"
     (ngSubmit)="submit()"
     data-test-id="form-simulacao"
   >
-    <div class="text-white flex flex-col gap-8 mt-6">
-      <div class="flex flex-col gap-2">
-        <span class="font-normal">De quanto você precisa?</span>
+    <div class="text-white flex flex-col gap-6 sm:gap-8 mt-4">
+      <div class="flex flex-col gap-1 sm:gap-2">
+        <span class="font-normal text-sm sm:text-base">De quanto você precisa?</span>
         <input
           data-test-id="input-valor"
-          class="font-caixa h-12 border-b-2 border-border focus:border-primary focus:outline-none w-full text-primary font-semibold text-xl"
+          class="font-caixa h-10 sm:h-12 border-b-2 border-border focus:border-primary focus:outline-none w-full text-primary font-semibold text-lg sm:text-xl"
           type="text"
           inputmode="decimal"
           mask="separator.2"
@@ -29,7 +32,7 @@
           }"
         />
         <small
-          class="text-red-500"
+          class="text-red-500 text-xs sm:text-sm"
           *ngIf="
             form.get('valor_solicitado')?.touched &&
             form.get('valor_solicitado')?.hasError('required')
@@ -39,11 +42,11 @@
         </small>
       </div>
 
-      <div class="flex flex-col gap-2">
-        <span class="font-normal">Em quantas vezes quer pagar?</span>
+      <div class="flex flex-col gap-1 sm:gap-2">
+        <span class="font-normal text-sm sm:text-base">Em quantas vezes quer pagar?</span>
         <select
           data-test-id="select-prazo"
-          class="bg-card h-14 px-3 overflow-hidden rounded-md border-2 border-border"
+          class="bg-card h-12 sm:h-14 px-2 sm:px-3 rounded-md border-2 border-border text-sm sm:text-base"
           [ngClass]="{
             'outline-red-500 outline-2': form.get('prazo')?.touched && form.get('prazo')?.invalid,
           }"
@@ -55,7 +58,7 @@
           </option>
         </select>
         <small
-          class="text-red-500"
+          class="text-red-500 text-xs sm:text-sm"
           *ngIf="form.get('prazo')?.touched && form.get('prazo')?.hasError('required')"
         >
           A seleção de parcelas é obrigatória

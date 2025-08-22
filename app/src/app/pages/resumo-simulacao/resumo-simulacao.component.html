@@ -2,6 +2,7 @@
   <div
     class="flex h-full w-full flex-col items-center justify-center pb-32"
     data-test-id="loading-container"
+    aria-live="polite"
   >
     <app-loading-simulacao data-test-id="loading-simulacao" />
   </div>
@@ -11,20 +12,24 @@
   <div
     class="flex h-full w-full flex-col items-center justify-center pb-32"
     data-test-id="sucesso-container"
+    aria-live="polite"
   >
     <app-sucesso-simulacao data-test-id="sucesso-simulacao" />
   </div>
 </ng-container>
 
 <ng-container *ngIf="mostrarResumo">
-  <div class="px-5 flex flex-col gap-8 h-full pb-24" data-test-id="resumo-container">
+  <div
+    class="px-5 sm:px-6 md:lg:px-8 lg:px-10 flex flex-col gap-8 h-full pb-24 max-w-3xl mx-auto"
+    data-test-id="resumo-container"
+  >
     <div class="flex flex-col w-full gap-3">
-      <h2 class="font-caixa font-semibold text-2xl mt-4 m-0 p-0" data-test-id="resumo-titulo">
-        Resumo da simulação do {{ resumoSimulacao.produto.nome }} no valor de&nbsp;
-        <span
-          class="font-caixa font-semibold text-2xl text-primary leading-none"
-          data-test-id="resumo-valor"
-        >
+      <h2
+        class="font-caixa font-semibold text-2xl mt-4 m-0 p-0 leading-normal max-w-2xl"
+        data-test-id="resumo-titulo"
+      >
+        Resumo da simulação do {{ resumoSimulacao.produto.nome }} no valor de
+        <span class="text-primary font-bold" data-test-id="resumo-valor">
           {{
             resumoSimulacao.resultado_simulacao.valor_solicitado
               | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
@@ -32,7 +37,7 @@
         </span>
       </h2>
     </div>
-    <div class="flex flex-col flex-1 justify-between">
+    <div class="flex flex-col flex-1 justify-between pb-12">
       <div class="flex flex-col flex-1 gap-8 justify-start items-start">
         <div
           id="resumo-simulacao"
@@ -47,7 +52,16 @@
             >
               <span>Você pagará</span>
               <div class="flex flex-col items-end">
-                <span class="font-semibold" data-test-id="parcela-mensal">
+                <span
+                  class="font-semibold"
+                  data-test-id="parcela-mensal"
+                  [attr.aria-label]="
+                    'Você pagará ' +
+                    resumoSimulacao.resultado_simulacao.prazo +
+                    ' parcelas de ' +
+                    (resumoSimulacao.resultado_simulacao.parcela_mensal | currency: 'BRL')
+                  "
+                >
                   {{ resumoSimulacao.resultado_simulacao.prazo }}x
                   {{
                     resumoSimulacao.resultado_simulacao.parcela_mensal
@@ -58,6 +72,7 @@
                   routerLink="/simulacao/detalhamento-parcelas"
                   class="font-light text-primary-light underline"
                   data-test-id="link-ver-parcelas"
+                  aria-label="Ver detalhes das parcelas"
                 >
                   Ver parcelas
                 </a>
@@ -71,7 +86,14 @@
             >
               <span>Taxa efetiva</span>
               <div class="flex flex-col items-end">
-                <span class="font-semibold" data-test-id="valor-taxa-efetiva">
+                <span
+                  class="font-semibold"
+                  data-test-id="valor-taxa-efetiva"
+                  [attr.aria-label]="
+                    'Taxa efetiva mensal: ' +
+                    (resumoSimulacao.resultado_simulacao.taxa_efetiva_mensal | percent: '1.2-2')
+                  "
+                >
                   {{ resumoSimulacao.resultado_simulacao.taxa_efetiva_mensal | percent: '1.2-2' }}
                 </span>
                 <span class="font-light">ao mês</span>
@@ -85,7 +107,13 @@
             >
               <span>Taxa anual</span>
               <div class="flex flex-col items-end">
-                <span class="font-semibold" data-test-id="valor-taxa-anual">
+                <span
+                  class="font-semibold"
+                  data-test-id="valor-taxa-anual"
+                  [attr.aria-label]="
+                    'Taxa anual: ' + (resumoSimulacao.produto.taxa_anual | percent: '1.2-2')
+                  "
+                >
                   {{ resumoSimulacao.produto.taxa_anual | percent: '1.2-2' }}
                 </span>
                 <span class="font-light">ao ano</span>
@@ -101,7 +129,13 @@
             >
               <span>Juros totais</span>
               <div class="flex flex-col items-end">
-                <span data-test-id="valor-total-juros">
+                <span
+                  data-test-id="valor-total-juros"
+                  [attr.aria-label]="
+                    'Total de juros a pagar: ' +
+                    (resumoSimulacao.resultado_simulacao.valor_total_em_juros | currency: 'BRL')
+                  "
+                >
                   {{
                     resumoSimulacao.resultado_simulacao.valor_total_em_juros
                       | currency: 'BRL' : 'symbol-narrow' : '1.2-2' : 'pt-BR'
@@ -149,14 +183,17 @@
           class="flex flex-col gap-4 w-full"
           data-test-id="infos-adicionais"
         >
-          <div
+          <section
             class="flex flex-row justify-start items-center gap-3 border-2 border-border rounded-md px-2 py-4"
             data-test-id="info-conta-caixa"
           >
             <div
               class="w-12 h-12 bg-border/70 rounded-full flex flex-col items-center justify-center text-primary/80"
             >
-              <mat-icon class="material-icons-outlined" aria-label="Simbolo de dinheiro"
+              <mat-icon
+                aria-hidden="true"
+                class="material-icons-outlined"
+                aria-label="Simbolo de dinheiro"
                 >payments</mat-icon
               >
             </div>
@@ -166,16 +203,19 @@
                 <span class="font-semibold text-primary-light">Conta Caixa</span> imediatamente.
               </span>
             </div>
-          </div>
+          </section>
 
-          <div
+          <section
             class="flex flex-row justify-start items-center gap-3 border-2 border-border rounded-md px-2 py-4"
             data-test-id="info-ajuda"
           >
             <div
               class="w-12 h-12 bg-border/70 rounded-full flex flex-col items-center justify-center text-primary/80"
             >
-              <mat-icon class="material-icons-outlined" aria-label="Simbolo de interrogação"
+              <mat-icon
+                aria-hidden="true"
+                class="material-icons-outlined"
+                aria-label="Simbolo de interrogação"
                 >help_outline</mat-icon
               >
             </div>
@@ -190,13 +230,15 @@
                 <span class="text-sm text-primary-light underline">Entre em contato conosco</span>
               </a>
             </div>
-          </div>
+          </section>
         </div>
       </div>
       <app-button
         [label]="'Fechar'"
         classes="w-full mt-8"
         (click)="irParaHome()"
+        (keydown.enter)="irParaHome()"
+        (keydown.space)="irParaHome()"
         data-test-id="btn-fechar"
       />
     </div>

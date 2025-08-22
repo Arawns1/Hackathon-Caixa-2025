@@ -1,4 +1,4 @@
-<div class="px-5 flex flex-col gap-8 h-full pb-20">
+<div class="px-5 sm:px-6 md:lg:px-8 lg:px-10 flex flex-col gap-4 h-full pb-12 max-w-3xl mx-auto">
   <h2
     class="text-white font-caixa font-semibold text-2xl mt-6 mb-4"
     data-test-id="titulo-cadastro-produto"
@@ -6,14 +6,13 @@
     Cadastrar novo produto de empréstimo
   </h2>
   <form
-    class="flex flex-col flex-1 justify-between"
+    class="flex flex-col flex-1 justify-between gap-12"
     [formGroup]="form"
     (ngSubmit)="submit()"
     data-test-id="form-cadastro-produto"
   >
-    <div class="flex flex-col flex-1 justify-start gap-8">
-      <!-- Nome do produto -->
-      <div class="w-full flex flex-col gap-2">
+    <div class="flex flex-col flex-1 justify-start gap-6">
+      <div id="nome-produto" class="w-full flex flex-col gap-2">
         <label data-test-id="label-nome">Nome do produto*</label>
         <input
           class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
@@ -40,9 +39,8 @@
         </small>
       </div>
 
-      <!-- Taxa anual -->
-      <div class="w-full flex flex-col gap-2">
-        <label data-test-id="label-taxa-anual">Taxa anual*</label>
+      <div id="taxa-anual" class="w-full flex flex-col gap-2">
+        <label for="input-taxa-anual" data-test-id="label-taxa-anual">Taxa anual*</label>
         <input
           class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
           [ngClass]="{
@@ -57,6 +55,7 @@
           separatorLimit="99999"
           [dropSpecialCharacters]="true"
           data-test-id="input-taxa-anual"
+          id="input-taxa-anual"
         />
         <small
           class="text-red-500"
@@ -67,9 +66,10 @@
         </small>
       </div>
 
-      <!-- Prazo máximo -->
-      <div class="w-full flex flex-col gap-2">
-        <label data-test-id="label-prazo-maximo">Qual o prazo máximo?*</label>
+      <div id="prazo-maximo" class="w-full flex flex-col gap-2">
+        <label for="input-prazo-maximo" data-test-id="label-prazo-maximo"
+          >Qual o prazo máximo?*</label
+        >
         <input
           class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
           [ngClass]="{
@@ -82,6 +82,7 @@
           mask="separator.0"
           [dropSpecialCharacters]="true"
           data-test-id="input-prazo-maximo"
+          id="input-prazo-maximo"
         />
         <small
           class="text-red-500"
@@ -111,7 +112,7 @@
 
     <app-button
       [label]="'Salvar'"
-      classes="w-full mt-8"
+      classes="w-full "
       type="submit"
       [disabled]="isLoading"
       [isLoading]="isLoading"

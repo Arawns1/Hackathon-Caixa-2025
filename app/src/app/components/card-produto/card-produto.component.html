@@ -1,7 +1,18 @@
 <div
   data-test-id="card-produto"
-  class="bg-card text-white px-4 pt-6 pb-5 rounded-lg shadow-lg flex flex-col items-start gap-5"
+  class="bg-card text-white px-5 py-6 md:px-6 md:py-8 rounded-lg shadow-lg flex flex-col items-start gap-5 md:gap-7"
   (click)="selecionarProduto()"
+  (keydown.enter)="selecionarProduto()"
+  (keydown.space)="selecionarProduto()"
+  [attr.aria-label]="
+    'Simular produto ' +
+    produto.nome +
+    ' com taxa a partir de ' +
+    (produto.taxa_anual | percent: '1.2-2') +
+    ' e prazo máximo de ' +
+    produto.prazo_maximo +
+    ' parcelas'
+  "
 >
   <h3 data-test-id="produto-nome" class="font-caixa font-semibold text-xl">{{ produto.nome }}</h3>
   <div class="flex flex-col gap-2 w-full">

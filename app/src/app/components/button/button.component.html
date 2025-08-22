@@ -1,12 +1,15 @@
 <button
   [type]="type"
-  [disabled]="disabled"
-  class="bg-secondary font-semibold p-3 rounded mt-2 text-white active:bg-secondary/50 active:text-white/50 disabled:bg-secondary/40 disabled:text-white/40 cursor-pointer text-center flex flex-row justify-center items-center"
+  [disabled]="disabled || isLoading"
+  class="bg-secondary font-semibold p-3 rounded mt-2 text-white active:bg-secondary/50 active:text-white/50 disabled:bg-secondary/40 disabled:text-white/40 cursor-pointer text-center flex flex-row justify-center items-center relative"
   [ngClass]="classes"
+  [attr.aria-busy]="isLoading"
+  [attr.aria-label]="isLoading ? 'Carregando...' : label"
 >
   <div
     *ngIf="isLoading"
-    class="w-6 h-6 border-2 border-t-white border-gray-200 rounded-full animate-spin absolute"
+    class="w-6 h-6 border-2 border-t-white border-gray-200 rounded-full animate-spin mr-2"
+    aria-hidden="true"
   ></div>
   <span [class.opacity-0]="isLoading">{{ label }}</span>
 </button>

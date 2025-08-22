@@ -1,4 +1,7 @@
-<div class="px-5 flex flex-col gap-8 mt-6 pb-12 h-full" data-test-id="lista-produtos-container">
+<div
+  class="px-5 sm:px-6 md:lg:px-8 lg:px-10 flex flex-1 flex-col gap-8 mt-6 pb-12"
+  data-test-id="lista-produtos-container"
+>
   <h2 class="text-white font-caixa font-semibold text-2xl" data-test-id="titulo">
     Faça um empréstimo que combina com sua necessidade
   </h2>
@@ -15,7 +18,7 @@
   </div>
 
   <ng-template #listaProdutos>
-    <div class="flex flex-col gap-6" data-test-id="produtos-lista">
+    <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" data-test-id="produtos-lista">
       <app-card-produto
         *ngFor="let produto of produtos"
         [produto]="produto"

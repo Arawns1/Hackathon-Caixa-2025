@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CardMenuComponent } from '../../components/card-menu/card-menu.component';
 
 @Component({
@@ -9,4 +8,10 @@ import { CardMenuComponent } from '../../components/card-menu/card-menu.componen
   templateUrl: './tela-inicial.component.html',
   styleUrl: './tela-inicial.component.css',
 })
-export class TelaInicialComponent {}
+export class TelaInicialComponent {
+  constructor(private readonly router: Router) {}
+
+  redirecionar(rota: string) {
+    this.router.navigate([rota]);
+  }
+}

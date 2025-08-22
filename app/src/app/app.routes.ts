@@ -1,9 +1,4 @@
 import { Routes } from '@angular/router';
-import { ListaProdutosComponent } from './pages/lista-produtos/lista-produtos.component';
-import { SimulacaoComponent } from './pages/simulacao/simulacao.component';
-import { ResumoSimulacaoComponent } from './pages/resumo-simulacao/resumo-simulacao.component';
-import { DetalhamentoParcelasComponent } from './pages/detalhamento-parcelas/detalhamento-parcelas.component';
-import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
 import { TelaInicialComponent } from './pages/tela-inicial/tela-inicial.component';
 import { SimulacaoProviderComponent } from './components/simulacao-provider/simulacao-provider.component';
 
@@ -16,12 +11,20 @@ export const routes: Routes = [
   {
     path: 'produtos',
     children: [
-      { path: '',
-        loadComponent: () => import('./pages/lista-produtos/lista-produtos.component').then(m => m.ListaProdutosComponent),
-         data: { title: 'Lista de Produtos' } },
+      {
+        path: '',
+        loadComponent: () =>
+          import('./pages/lista-produtos/lista-produtos.component').then(
+            m => m.ListaProdutosComponent,
+          ),
+        data: { title: 'Lista de Produtos' },
+      },
       {
         path: 'cadastro',
-        loadComponent: () => import('./pages/cadastro-produto/cadastro-produto.component').then(m => m.CadastroProdutoComponent),
+        loadComponent: () =>
+          import('./pages/cadastro-produto/cadastro-produto.component').then(
+            m => m.CadastroProdutoComponent,
+          ),
         data: { title: 'Novo Produto' },
       },
     ],
@@ -30,15 +33,26 @@ export const routes: Routes = [
     path: 'simulacao',
     component: SimulacaoProviderComponent,
     children: [
-      { path: '', loadComponent: () => import('./pages/simulacao/simulacao.component').then(m => m.SimulacaoComponent), data: { title: 'Simulação' } },
+      {
+        path: '',
+        loadComponent: () =>
+          import('./pages/simulacao/simulacao.component').then(m => m.SimulacaoComponent),
+        data: { title: 'Simulação' },
+      },
       {
         path: 'resumo',
-        loadComponent: () => import('./pages/resumo-simulacao/resumo-simulacao.component').then(m => m.ResumoSimulacaoComponent),
+        loadComponent: () =>
+          import('./pages/resumo-simulacao/resumo-simulacao.component').then(
+            m => m.ResumoSimulacaoComponent,
+          ),
         data: { title: 'Resumo da Simulação' },
       },
       {
         path: 'detalhamento-parcelas',
-        loadComponent: () => import('./pages/detalhamento-parcelas/detalhamento-parcelas.component').then(m => m.DetalhamentoParcelasComponent),
+        loadComponent: () =>
+          import('./pages/detalhamento-parcelas/detalhamento-parcelas.component').then(
+            m => m.DetalhamentoParcelasComponent,
+          ),
         data: { title: 'Dados das Parcelas' },
       },
     ],
