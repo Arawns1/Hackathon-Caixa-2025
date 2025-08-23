@@ -47,7 +47,7 @@ jobs:
             -Dsonar.qualitygate.wait=true
 
   release-beta:
-    name: Gerar Release Beta Automática
+    name: Gerar Release Beta
     runs-on: ubuntu-latest
     needs: sonar
     permissions:
@@ -63,7 +63,7 @@ jobs:
       - name: Configurar Node.js para Release
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
 
       - name: Instalar Dependências do Projeto para Release
         run: cd app && npm ci
