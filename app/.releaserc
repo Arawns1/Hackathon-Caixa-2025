@@ -12,7 +12,13 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     "@semantic-release/npm",
-    "@semantic-release/git",
+    [
+      "@semantic-release/git",
+      {
+        "message": "chore(release): Versão ${nextRelease.version}",
+        "skipCI": false
+      }
+    ],
     "@semantic-release/github"
   ],
   "preset": "angular"
