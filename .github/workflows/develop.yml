@@ -74,8 +74,11 @@ jobs:
       - name: Instalar Semantic Release
         run: cd app && npm install --save-dev semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/npm
 
-      - name: Executar Semantic Release Beta
-        run: cd app && npx semantic-release
+      - name: Executar Semantic Release Produção
+        run: |
+          cd app
+          npx semantic-release
+          mv CHANGELOG.md ../
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GIT_TOKEN }}
           NODE_ENV: development

@@ -78,7 +78,10 @@ jobs:
         run: cd app && npm install --save-dev semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/npm
 
       - name: Executar Semantic Release Produção
-        run: cd app && npx semantic-release
+        run: |
+          cd app
+          npx semantic-release
+          mv CHANGELOG.md ../
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GIT_TOKEN }}
           NODE_ENV: production
