@@ -43,6 +43,7 @@ Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos
 - Detalhamento de parcelas
 - Resumo de simulação
 - Animações Lottie
+- Tema claro e escuro
 
 ## ♿ Acessibilidade
 
@@ -71,6 +72,7 @@ Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos
 - Karma
 - Github Actions
 - Figma
+- Gitflow e versionamento automático com semantic-release
 
 ## 🚀 Como Executar
 
