@@ -1,3 +1,10 @@
+# [1.1.0-develop.1](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.0.0...v1.1.0-develop.1) (2025-08-24)
+
+
+### Features
+
+* adiciona troca entre temas claro e escuro ([e945dd8](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/e945dd8b2ed9e58ad1cf5b6c1730f197c823ec9d))
+
 # 1.0.0 (2025-08-24)
 
 

@@ -1,4 +1,6 @@
-<div class="px-5 sm:px-6 md:lg:px-8 lg:px-10 flex flex-col gap-8 h-full pb-20 max-w-3xl mx-auto">
+<div
+  class="px-5 sm:px-6 md:lg:px-8 lg:px-10 flex flex-col gap-8 h-full pb-20 max-w-3xl mx-auto text-foreground pt-2 md:pt-6"
+>
   <div class="mt-6 flex flex-col gap-6">
     <h2
       class="font-caixa font-semibold text-2xl m-0 p-0 leading-none"
@@ -44,9 +46,10 @@
                 [style.display]="accordionItem.expanded ? '' : 'none'"
                 [attr.id]="'accordion-body-' + index"
                 [attr.aria-labelledby]="'accordion-header-' + index"
+                class="text-foreground font-normal"
               >
                 <div class="flex flex-col gap-2 px-3 py-4">
-                  <div class="w-full flex flex-row items-center justify-between text-md font-light">
+                  <div class="w-full flex flex-row items-center justify-between text-md">
                     <span>Valor amortização:</span>
                     <span
                       [attr.aria-label]="
@@ -59,7 +62,7 @@
                     >
                   </div>
 
-                  <div class="w-full flex flex-row items-center justify-between text-md font-light">
+                  <div class="w-full flex flex-row items-center justify-between text-md">
                     <span>Valor juros:</span>
                     <span
                       [attr.aria-label]="
@@ -71,7 +74,7 @@
                     >
                   </div>
 
-                  <div class="w-full flex flex-row items-center justify-between text-md font-light">
+                  <div class="w-full flex flex-row items-center justify-between text-md">
                     <span>Saldo devedor:</span>
                     <span
                       [attr.aria-label]="

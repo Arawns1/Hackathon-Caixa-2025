@@ -1,12 +1,11 @@
-<div class="px-5 sm:px-6 md:lg:px-8 lg:px-10 flex flex-col gap-4 h-full pb-12 max-w-3xl mx-auto">
-  <h2
-    class="text-white font-caixa font-semibold text-2xl mt-6 mb-4"
-    data-test-id="titulo-cadastro-produto"
-  >
+<div
+  class="px-5 sm:px-6 md:lg:px-8 lg:px-10 flex flex-col gap-4 h-full pb-12 max-w-3xl mx-auto text-foreground pt-2 md:pt-6"
+>
+  <h2 class="font-caixa font-semibold text-2xl mt-6 mb-4" data-test-id="titulo-cadastro-produto">
     Cadastrar novo produto de empréstimo
   </h2>
   <form
-    class="flex flex-col flex-1 justify-between gap-12"
+    class="flex flex-col flex-1 justify-between gap-12 pb-8"
     [formGroup]="form"
     (ngSubmit)="submit()"
     data-test-id="form-cadastro-produto"
@@ -15,7 +14,7 @@
       <div id="nome-produto" class="w-full flex flex-col gap-2">
         <label for="input-nome" data-test-id="label-nome">Nome do produto*</label>
         <input
-          class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
+          class="h-14 border-2 border-input px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
           placeholder="Digite o nome do produto"
           formControlName="nome"
           maxlength="200"
@@ -52,7 +51,7 @@
       <div id="taxa-anual" class="w-full flex flex-col gap-2">
         <label for="input-taxa-anual" data-test-id="label-taxa-anual">Taxa anual*</label>
         <input
-          class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
+          class="h-14 border-2 border-input px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
           [ngClass]="{
             'border-red-500': form.get('taxa_anual')?.touched && form.get('taxa_anual')?.invalid,
           }"
@@ -81,7 +80,7 @@
           >Qual o prazo máximo?*</label
         >
         <input
-          class="h-14 border-2 border-border px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
+          class="h-14 border-2 border-input px-2 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md"
           [ngClass]="{
             'border-red-500':
               form.get('prazo_maximo')?.touched && form.get('prazo_maximo')?.invalid,
