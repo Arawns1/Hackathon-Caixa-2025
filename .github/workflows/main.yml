@@ -21,27 +21,34 @@ jobs:
           node-version: "20"
 
       - name: Instalar Dependências do Projeto
-        run: cd app && npm ci
+        working-directory: ./app
+        run: npm ci
 
       - name: Executar Testes e Gerar Cobertura
-        run: cd app && npm test -- --code-coverage --watch=false
+        working-directory: ./app
+        run: npm test -- --code-coverage --watch=false
 
       - name: Instalar SonarScanner
-        run: cd app && npm install -D sonar-scanner
+        working-directory: ./app
+        run: npm install -D sonar-scanner
 
       - name: Analisar Código com SonarScanner
+        working-directory: ./app
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
+          SONAR_ORG_KEY: ${{ secrets.SONAR_ORG_KEY }}
         run: |
-          cd app
           npx sonar-scanner \
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} \
-            -Dsonar.organization=${{ secrets.SONAR_ORG_KEY }} \
+            -Dsonar.projectKey=$SONAR_PROJECT_KEY \
+            -Dsonar.organization=$SONAR_ORG_KEY \
             -Dsonar.sources=src \
             -Dsonar.tests=src \
             -Dsonar.exclusions=**/*.spec.ts,**/app.routes.ts \
             -Dsonar.test.inclusions=**/*.spec.ts \
             -Dsonar.javascript.lcov.reportPaths=coverage/app-simulacao-emprestimos/lcov.info \
             -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.login=$SONAR_TOKEN \
             -Dsonar.qualitygate.wait=true
 
   release:

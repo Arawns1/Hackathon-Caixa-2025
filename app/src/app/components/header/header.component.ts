@@ -3,6 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule, Location } from '@angular/common';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs/operators';
+import { TemaService } from '../../services/context/tema/tema.service';
 
 @Component({
   selector: 'app-header',
@@ -15,9 +16,10 @@ export class HeaderComponent {
   showHeader = true;
 
   constructor(
-    private router: Router,
-    private location: Location,
-    private route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly location: Location,
+    private readonly route: ActivatedRoute,
+    public readonly temaService: TemaService,
   ) {
     this.router.events
       .pipe(
@@ -39,5 +41,9 @@ export class HeaderComponent {
 
   voltarPagina() {
     this.location.back();
+  }
+
+  alterarTema(): void {
+    this.temaService.alterarTema();
   }
 }

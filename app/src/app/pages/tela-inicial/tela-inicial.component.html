@@ -1,10 +1,19 @@
-<div class="flex flex-col min-h-screen gradient pb-4">
-  <div class="flex flex-1 flex-col gap-14 justify-center items-center px-5 pt-4">
+<div class="flex flex-col min-h-svh pb-4 gradient">
+  <div class="flex flex-1 flex-col gap-14 justify-center items-center px-5">
     <div class="flex flex-col justify-center items-center gap-8">
       <div class="w-52 flex flex-col items-center justify-center">
-        <img src="assets/media/logo-full-negativa.png" alt="Logo da Caixa Econômica Federal" />
+        <img
+          src="assets/media/logo-full-negativa.png"
+          alt="Logo da Caixa Econômica Federal"
+          class="hidden dark:block"
+        />
+        <img
+          src="assets/media/logo-full-positiva.png"
+          alt="Logo da Caixa Econômica Federal"
+          class="block dark:hidden"
+        />
       </div>
-      <h2 class="text-white font-caixa font-semibold text-2xl text-center max-w-[400px]">
+      <h2 class="text-foreground font-caixa font-semibold text-2xl text-center max-w-[400px]">
         Bem-vindo(a) ao App de
         <span class="text-primary leading-relaxed">Simulações de Empréstimo</span>
       </h2>
