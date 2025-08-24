@@ -1,6 +1,6 @@
 <div
   data-test-id="card-produto"
-  class="bg-card text-white px-5 py-6 md:px-6 md:py-8 rounded-lg shadow-lg flex flex-col items-start gap-5 md:gap-7 h-full"
+  class="bg-card text-foreground border-border border-1 px-5 py-6 md:px-6 md:py-8 rounded-lg shadow-md hover:brightness-95 cursor-pointer flex flex-col items-start gap-5 md:gap-7 h-full"
   (click)="selecionarProduto()"
   (keydown.enter)="selecionarProduto()"
   (keydown.space)="selecionarProduto()"
@@ -20,7 +20,7 @@
   >
     {{ produto.nome }}
   </h3>
-  <div class="flex flex-col gap-3 w-full">
+  <div class="flex flex-col flex-1 gap-3 w-full">
     <div class="w-full flex flex-row justify-between items-start">
       <span>Taxas a partir de</span>
       <span data-test-id="produto-taxa" class="font-semibold text-end w-fit lg:max-w-30 xl:max-w-40"

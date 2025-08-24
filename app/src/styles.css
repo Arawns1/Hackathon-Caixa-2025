@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined');
 @import 'tailwindcss';
 @import 'ngx-toastr/toastr';
+@custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
   font-family: 'CaixaSTD';
@@ -32,16 +33,47 @@
 
 @theme {
   --font-caixa: CaixaSTD, sans-serif;
-  --color-white: #ffffff;
+  --color-foreground: #ffffff;
   --color-primary: #005ca9;
   --color-primary-light: #2d8ad8;
-  --color-secondary: #a65e00;
+  --color-secondary: #d87b00;
   --color-background: #232323;
   --color-light-gray: #323238cc;
   --color-card: #303030cc;
   --color-border: #303030ff;
+  --color-input: #303030dd;
   --color-placeholder: #e2e2e280;
   --color-muted: ##e6e6e6;
+  --color-background-rgb: 35, 35, 35;
+  --color-primary-rgb: 0, 92, 169;
+}
+
+:root {
+  --color-background: #ffffff;
+  --color-foreground: #22292e;
+  --color-secondary: #d87b00;
+  --color-light-gray: #d9d9d9cc;
+  --color-card: #f5f5f5cc;
+  --color-border: #d0e0e3;
+  --color-input: #9eb2bb;
+  --color-placeholder: #303030;
+  --color-muted: #64747a;
+  --color-background-rgb: 255, 255, 255;
+  --color-primary-rgb: 41, 148, 235;
+}
+
+[data-theme='dark'] {
+  --color-background: #232323;
+  --color-foreground: #ffffff;
+  --color-secondary: #a65e00;
+  --color-light-gray: #323238cc;
+  --color-card: #303030cc;
+  --color-border: #303030ff;
+  --color-input: #303030dd;
+  --color-placeholder: #e2e2e280;
+  --color-muted: ##e6e6e6;
+  --color-background-rgb: 35, 35, 35;
+  --color-primary-rgb: 0, 92, 169;
 }
 
 html,
@@ -61,5 +93,9 @@ body {
 }
 
 .gradient {
-  background: linear-gradient(180deg, rgba(35, 35, 35, 0.2) 73.26%, rgba(0, 92, 169, 0.2) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(var(--color-background-rgb), 0.78) 73.26%,
+    rgba(var(--color-primary-rgb), 0.25) 100%
+  );
 }

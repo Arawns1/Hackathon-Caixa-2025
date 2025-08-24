@@ -1,7 +1,7 @@
 <header
   *ngIf="showHeader"
   data-test-id="header"
-  class="text-white flex flex-row justify-between items-end bg-background flex-1 h-20 px-5 py-3 border-border border-b-2 sticky top-0 shadow-md"
+  class="text-foreground flex flex-row justify-between items-end bg-primary dark:bg-background flex-1 h-20 px-5 py-3 border-border border-b-2 sticky top-0 shadow-md"
 >
   <div class="w-full flex flex-row justify-between items-center">
     <button
@@ -9,16 +9,48 @@
       data-test-id="btn-voltar"
       tabindex="0"
       aria-label="Voltar"
-      class="h-10 w-10 flex items-center justify-center bg-light-gray p-2 rounded-full hover:cursor-pointer hover:bg-background/80"
+      title="Voltar para página anterior"
+      class="h-10 w-10 flex items-center justify-center bg-black/50 dark:bg-white/60 p-2 rounded-full hover:cursor-pointer hover:brightness-90"
       (click)="voltarPagina()"
     >
       <mat-icon
         aria-hidden="false"
         aria-label="Seta para a esquerda"
         fontIcon="arrow_back"
+        style="color: var(--color-background)"
       ></mat-icon>
     </button>
-    <h4 data-test-id="titulo-header" class="font-caixa font-semibold text-xl">{{ titulo }}</h4>
-    <div class="h-10 w-10 flex items-center justify-center p-2 rounded-full"></div>
+
+    <h4
+      data-test-id="titulo-header"
+      class="font-caixa text-white dark:text-foreground font-semibold text-xl"
+    >
+      {{ titulo }}
+    </h4>
+
+    <button
+      type="button"
+      data-test-id="btn-mudar-tema"
+      tabindex="0"
+      aria-label="Altera tema"
+      class="h-10 w-10 flex items-center justify-center bg-black/50 dark:bg-white/60 p-2 rounded-full hover:cursor-pointer hover:brightness-90"
+      (click)="alterarTema()"
+    >
+      <mat-icon
+        *ngIf="temaService.tema() === 'dark'"
+        aria-hidden="true"
+        fontIcon="light_mode"
+        title="Mudar para tema claro"
+        style="color: var(--color-background)"
+      />
+
+      <mat-icon
+        *ngIf="temaService.tema() === 'light'"
+        aria-hidden="true"
+        fontIcon="dark_mode"
+        title="Mudar para tema Escuro"
+        style="color: var(--color-background)"
+      />
+    </button>
   </div>
 </header>
