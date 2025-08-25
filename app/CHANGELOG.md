@@ -1,3 +1,17 @@
+# [1.2.0](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.1.0...v1.2.0) (2025-08-25)
+
+
+### Bug Fixes
+
+* Altera valores máximos e mínimos para taxas e valores simulados ([a79a13e](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/a79a13e05ea9fcdd50a327ed40b7f192837fe136))
+* Correção de teste do ToastService ([f3c0000](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/f3c00001af4f623321742b82f4d771938a7440ce))
+
+
+### Features
+
+* Adiciona interceptador de erros HTTP ([203f191](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/203f191d3b1f3c37264dbd51ad1215405754bf03))
+* **API:** Adiciona cálculos com decimais e interceptador de erro ([4a8b985](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/4a8b985317d783ab4f275ea36d96c191332b8013))
+
 # [1.2.0-develop.1](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.1.0...v1.2.0-develop.1) (2025-08-25)
 
 
