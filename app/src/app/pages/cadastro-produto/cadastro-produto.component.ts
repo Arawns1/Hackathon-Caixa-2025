@@ -23,19 +23,22 @@ export class CadastroProdutoComponent {
       Validators.pattern(/\S+/),
       Validators.maxLength(200),
     ]),
-    taxa_anual: new FormControl<number>(null!, [Validators.required]),
+    taxa_anual: new FormControl<number>(null!, [
+      Validators.required,
+      Validators.min(0.0),
+      Validators.max(999.99),
+    ]),
     prazo_maximo: new FormControl<number>(null!, [
       Validators.required,
-
       Validators.min(1),
       Validators.max(999),
     ]),
   });
 
   constructor(
-    private produtoService: ProdutosService,
-    private toast: ToastService,
-    private router: Router,
+    private readonly produtoService: ProdutosService,
+    private readonly toast: ToastService,
+    private readonly router: Router,
   ) {}
 
   submit() {

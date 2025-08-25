@@ -34,5 +34,13 @@ describe('ToastService', () => {
       service.erro(mensagem);
       expect(spy).toHaveBeenCalledWith(mensagem);
     });
+
+    it('deve chamar toastr.error com a mensagem e detalhe corretamente', () => {
+      const spy = spyOn(toastr, 'error');
+      const mensagem = 'Ocorreu um erro';
+      const detalhe = 'detalhe erro';
+      service.erro(mensagem, detalhe);
+      expect(spy).toHaveBeenCalledWith(mensagem, detalhe);
+    });
   });
 });

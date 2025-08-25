@@ -15,7 +15,7 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/app-simulacao-emprestimos'),
       subdir: '.',
-      reporters: [{ type: 'lcovonly' }, { type: 'text-summary' }],
+      reporters: [{ type: 'html' }, { type: 'lcovonly' }, { type: 'text-summary' }],
     },
     browsers: ['ChromeHeadless'],
     singleRun: true,

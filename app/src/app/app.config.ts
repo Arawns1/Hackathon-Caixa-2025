@@ -7,16 +7,17 @@ import {
 import { provideRouter } from '@angular/router';
 import { provideEnvironmentNgxMask, provideNgxMask } from 'ngx-mask';
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
+import { httpErrorInterceptor } from './services/interceptors/http-error.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideEnvironmentNgxMask(),
     provideNgxMask(),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([httpErrorInterceptor])),
     provideRouter(routes),
     provideAnimations(),
     provideToastr({

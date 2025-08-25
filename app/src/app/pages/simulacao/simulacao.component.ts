@@ -38,9 +38,9 @@ export class SimulacaoComponent implements OnInit {
 
   constructor(
     public produtoContext: ProdutosContextService,
-    private simulacaoContext: SimulacaoContextService,
-    private router: Router,
-    private toast: ToastService,
+    private readonly simulacaoContext: SimulacaoContextService,
+    private readonly router: Router,
+    private readonly toast: ToastService,
   ) {}
 
   ngOnInit(): void {
@@ -54,7 +54,11 @@ export class SimulacaoComponent implements OnInit {
     this.produto = produtoContexto;
     this.form = new FormGroup({
       id_produto: new FormControl(this.produto.id, [Validators.required]),
-      valor_solicitado: new FormControl(1000.0, [Validators.required, Validators.min(1)]),
+      valor_solicitado: new FormControl(1000.0, [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(100000000.0),
+      ]),
       prazo: new FormControl('', [Validators.required, Validators.min(1), Validators.max(999)]),
     });
   }
