@@ -1,3 +1,10 @@
+# [1.2.0-develop.2](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.2.0-develop.1...v1.2.0-develop.2) (2025-08-25)
+
+
+### Bug Fixes
+
+* Correção de teste do ToastService ([f3c0000](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/f3c00001af4f623321742b82f4d771938a7440ce))
+
 # [1.2.0-develop.1](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.1.0...v1.2.0-develop.1) (2025-08-25)
 
 
