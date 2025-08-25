@@ -40,7 +40,7 @@ describe('ToastService', () => {
       const mensagem = 'Ocorreu um erro';
       const detalhe = 'detalhe erro';
       service.erro(mensagem, detalhe);
-      expect(spy).toHaveBeenCalledWith(mensagem, detalhe);
+      expect(spy).toHaveBeenCalledWith(detalhe, mensagem);
     });
   });
 });
