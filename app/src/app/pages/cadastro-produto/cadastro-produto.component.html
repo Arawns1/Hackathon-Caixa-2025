@@ -58,10 +58,11 @@
           placeholder="0,00%"
           formControlName="taxa_anual"
           suffix="%"
+          inputmode="decimal"
           mask="separator.2"
+          maxlength="50"
           thousandSeparator="."
           decimalMarker=","
-          separatorLimit="99999"
           [dropSpecialCharacters]="true"
           data-test-id="input-taxa-anual"
           id="input-taxa-anual"
@@ -72,6 +73,20 @@
           data-test-id="error-taxa-anual-required"
         >
           Taxa anual é obrigatória
+        </small>
+        <small
+          class="text-red-500"
+          *ngIf="form.get('taxa_anual')?.touched && form.get('taxa_anual')?.hasError('min')"
+          data-test-id="error-taxa-anual-required"
+        >
+          Taxa anual mínima é 0,00%
+        </small>
+        <small
+          class="text-red-500"
+          *ngIf="form.get('taxa_anual')?.touched && form.get('taxa_anual')?.hasError('max')"
+          data-test-id="error-taxa-anual-required"
+        >
+          Taxa anual máxima é 999,99%
         </small>
       </div>
 
@@ -87,8 +102,10 @@
           }"
           type="number"
           placeholder="0"
+          inputmode="numeric"
           formControlName="prazo_maximo"
           mask="separator.0"
+          maxlength="50"
           [dropSpecialCharacters]="true"
           data-test-id="input-prazo-maximo"
           id="input-prazo-maximo"

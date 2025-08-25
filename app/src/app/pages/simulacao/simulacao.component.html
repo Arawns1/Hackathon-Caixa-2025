@@ -43,6 +43,23 @@
         >
           O valor solicitado é obrigatório
         </small>
+        <small
+          class="text-red-500 text-xs sm:text-sm"
+          *ngIf="
+            form.get('valor_solicitado')?.touched && form.get('valor_solicitado')?.hasError('max')
+          "
+        >
+          O valor máximo por este canal é de R$ 100.000.000,00 (cem milhões de reais). Para simular
+          valores maiores, favor contatar uma agência da Caixa
+        </small>
+        <small
+          class="text-red-500 text-xs sm:text-sm"
+          *ngIf="
+            form.get('valor_solicitado')?.touched && form.get('valor_solicitado')?.hasError('min')
+          "
+        >
+          O valor mínimo de simulação por esse canal é de R$1,00. Por favor, insira um valor maior.
+        </small>
       </div>
 
       <div class="flex flex-col gap-1 sm:gap-2">
