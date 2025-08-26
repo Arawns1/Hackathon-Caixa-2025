@@ -70,7 +70,8 @@ export class ResumoSimulacaoComponent implements OnInit {
       },
       error: err => {
         this.isLoading = false;
-        console.error(err);
+        this.toast.erro('Erro ao realizar simulação. Tente novamente mais tarde');
+        this.router.navigate(['/']);
       },
     });
   }

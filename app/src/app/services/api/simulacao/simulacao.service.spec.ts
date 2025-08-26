@@ -41,13 +41,20 @@ describe('SimulacaoService', () => {
         parcelas: [],
       },
     };
+
     let resposta: RespostaSimulacaoDTO | undefined;
+
     service.simular(simulacao).subscribe(res => (resposta = res));
-    tick(3000);
+    tick();
+
     const req = httpMock.expectOne(`${environment.baseURL}/simulacoes`);
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(simulacao);
+
     req.flush(respostaEsperada);
+
+    tick(3500);
+
     expect(resposta).toEqual(respostaEsperada);
   }));
 });
