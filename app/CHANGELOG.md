@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.3.1...v1.4.0) (2025-08-26)
+
+
+### Features
+
+* Transforma a aplicação em PWA ([5472f18](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/5472f181376145e4fa510cc3679cd36d7b5d8445))
+
 # [1.4.0-develop.1](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.3.1...v1.4.0-develop.1) (2025-08-26)
 
 
