@@ -24,17 +24,5 @@
         "files": ["/**/*.(svg|cur|jpg|jpeg|png|apng|webp|avif|gif|otf|ttf|woff|woff2|lottie)"]
       }
     }
-  ],
-  "dataGroups": [
-    {
-      "name": "api-produtos",
-      "urls": ["https://hackathon-caixa-2025.onrender.com/produtos"],
-      "cacheConfig": {
-        "strategy": "freshness",
-        "maxAge": "30m",
-        "maxSize": 3,
-        "timeout": "5s"
-      }
-    }
   ]
 }

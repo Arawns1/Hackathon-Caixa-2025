@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseURL: 'https://hackathon-caixa-2025.onrender.com',
+  baseURL: '__BASE_URL__',
 };

@@ -61,7 +61,7 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ],
-              "serviceWorker": "ngsw-config.development.json"
+              "serviceWorker": "ngsw-config.json"
             }
           },
           "defaultConfiguration": "production"
