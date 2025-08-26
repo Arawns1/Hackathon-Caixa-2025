@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.4.1...v1.4.2) (2025-08-26)
+
+
+### Bug Fixes
+
+* Correção do arquivo webmanifest ([dc034f7](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/dc034f7c83d53357649f53081768582eeac6528f))
+
 ## [1.4.1](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.4.0...v1.4.1) (2025-08-26)
 
 
