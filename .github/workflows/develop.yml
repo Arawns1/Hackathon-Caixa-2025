@@ -28,6 +28,9 @@ jobs:
         working-directory: ./app
         run: npm ci
 
+      - name: Executar Testes
+        run: cd app && npm run test:coverage
+
       - name: Build do Projeto
         working-directory: ./app
         run: npm run build
