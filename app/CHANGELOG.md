@@ -1,3 +1,10 @@
+# [1.2.0-develop.3](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.2.0-develop.2...v1.2.0-develop.3) (2025-08-26)
+
+
+### Features
+
+* Adiciona fuzzy search para buscar produtos ([4a15b43](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/4a15b4347c62f518a195c17df657842b197406d5))
+
 # [1.2.0-develop.2](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.2.0-develop.1...v1.2.0-develop.2) (2025-08-25)
 
 
