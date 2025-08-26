@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.3.0...v1.3.1) (2025-08-26)
+
+
+### Bug Fixes
+
+* Remove toast de casos default ([16b2e5e](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/16b2e5e7695c5b21336b98c594d3981d2be4cdad))
+
 # [1.3.0](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.2.0...v1.3.0) (2025-08-26)
 
 
