@@ -8,6 +8,7 @@ import { ProdutosService } from '../../services/api/produtos/produtos.service';
 import { ProdutosContextService } from '../../services/context/produtos/produtos-context.service';
 import { ToastService } from '../../services/libs/toast/toast.service';
 import { ListaProdutosComponent } from './lista-produtos.component';
+import { InputBuscaProdutosComponent } from '../../components/input-busca-produtos/input-busca-produtos.component';
 
 describe('ListaProdutosComponent', () => {
   let component: ListaProdutosComponent;
@@ -26,7 +27,12 @@ describe('ListaProdutosComponent', () => {
     produtosService.obter.and.returnValue(of(mockProdutos).pipe(observeOn(asyncScheduler)));
     toast = jasmine.createSpyObj('ToastService', ['erro']);
     await TestBed.configureTestingModule({
-      imports: [ListaProdutosComponent, CommonModule, CardProdutoComponent],
+      imports: [
+        ListaProdutosComponent,
+        CommonModule,
+        CardProdutoComponent,
+        InputBuscaProdutosComponent,
+      ],
       providers: [
         provideRouter([]),
         provideHttpClient(),
@@ -101,4 +107,15 @@ describe('ListaProdutosComponent', () => {
     expect(component.produtos.length).toBe(0);
     expect(router.navigate).toHaveBeenCalledWith(['/']);
   }));
+
+  it('deve atualizar produtosExibidos ao chamar onProdutosFiltrados', () => {
+    const filtradosMock = [mockProdutos[1]];
+    component.onProdutosFiltrados(filtradosMock);
+    expect(component.produtosExibidos).toEqual(filtradosMock);
+  });
+
+  it('deve aceitar lista vazia em onProdutosFiltrados', () => {
+    component.onProdutosFiltrados([]);
+    expect(component.produtosExibidos).toEqual([]);
+  });
 });

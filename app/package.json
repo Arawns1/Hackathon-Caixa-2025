@@ -1,6 +1,6 @@
 {
   "name": "app-simulacao-emprestimos",
-  "version": "1.2.0",
+  "version": "1.2.0-develop.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration production",
