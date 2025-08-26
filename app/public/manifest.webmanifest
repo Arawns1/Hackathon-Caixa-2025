@@ -1,8 +1,10 @@
 {
   "name": "App Simulação de Empréstimos",
   "short_name": "App Simulação de Empréstimos",
+  "description": "App mobile para cadastrar produtos de empréstimo, simular financiamentos e visualizar resultados mês a mês.",
   "display": "standalone",
-  "theme-color": "#1976d2",
+  "theme-color": "#005ca9",
+  "background-color": "#232323",
   "scope": "./",
   "start_url": "./",
   "icons": [
