@@ -63,10 +63,4 @@ describe('httpErrorInterceptor', () => {
     );
     expect(routerSpy.navigate).toHaveBeenCalledWith(['/']);
   }));
-
-  it('deve mostrar toast de erro padrão para outros status sem navegar', fakeAsync(async () => {
-    await executarInterceptorComErro(401).catch(() => {});
-    expect(toastSpy.erro).toHaveBeenCalledWith('Ocorreu um erro inesperado.');
-    expect(routerSpy.navigate).not.toHaveBeenCalled();
-  }));
 });

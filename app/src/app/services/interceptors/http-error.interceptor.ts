@@ -16,7 +16,7 @@ const handleError = (toast: ToastService, router: Router, status: number, detalh
       toast.erro('Ocorreu um erro interno. Tente novamente mais tarde!');
       break;
     default:
-      toast.erro('Ocorreu um erro inesperado.');
+      console.error('Ocorreu um erro inesperado.');
   }
 
   if ([400, 404, 500].includes(status)) {
