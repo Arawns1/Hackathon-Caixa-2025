@@ -30,6 +30,7 @@
     - [Deploy](#deploy)
     - [🧪 Testes](#-testes)
     - [📦 Build](#-build)
+  - [❓ Ficou com alguma dúvida](#-ficou-com-alguma-dúvida)
 
 ## 🎯 Objetivo Principal
 
@@ -44,6 +45,8 @@ Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos
 - Resumo de simulação
 - Animações Lottie
 - Tema claro e escuro
+- Busca por produtos de empréstimo
+- Instalação como aplicativo mobile e desktop (PWA)
 
 ## ♿ Acessibilidade
 
@@ -73,6 +76,7 @@ Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos
 - Github Actions
 - Figma
 - Gitflow e versionamento automático com semantic-release
+- Progressive Web APP (PWA) - permite a instalação como aplicativo em desktops e dispositivos móveis
 
 ## 🚀 Como Executar
 
@@ -163,3 +167,7 @@ npm run build
 # Build de desenvolvimento com watch
 npm run watch
 ```
+
+## ❓ Ficou com alguma dúvida
+
+Se ficou com alguma dúvida, pode me contatar pelo Teams utilizando a matrícula **c158787**.
