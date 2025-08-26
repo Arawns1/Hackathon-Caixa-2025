@@ -7,22 +7,24 @@ import { ProdutoDTO } from '../../models/Produto';
 import { ProdutosService } from '../../services/api/produtos/produtos.service';
 import { ProdutosContextService } from '../../services/context/produtos/produtos-context.service';
 import { ToastService } from '../../services/libs/toast/toast.service';
+import { InputBuscaProdutosComponent } from '../../components/input-busca-produtos/input-busca-produtos.component';
 
 @Component({
   selector: 'app-lista-produtos',
-  imports: [CommonModule, CardProdutoComponent],
+  imports: [CommonModule, CardProdutoComponent, InputBuscaProdutosComponent],
   templateUrl: './lista-produtos.component.html',
   styleUrl: './lista-produtos.component.css',
 })
 export class ListaProdutosComponent implements OnInit {
   isLoading = false;
   produtos: ProdutoDTO[] = [];
+  produtosExibidos: ProdutoDTO[] = [];
 
   constructor(
-    private produtosService: ProdutosService,
-    private produtoContext: ProdutosContextService,
-    private router: Router,
-    private toast: ToastService,
+    private readonly produtosService: ProdutosService,
+    private readonly produtoContext: ProdutosContextService,
+    private readonly router: Router,
+    private readonly toast: ToastService,
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +34,10 @@ export class ListaProdutosComponent implements OnInit {
       .obter()
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe({
-        next: data => (this.produtos = data),
+        next: data => {
+          this.produtos = data;
+          this.produtosExibidos = data;
+        },
         error: err => {
           this.toast.erro('Erro ao listar produtos. Tente novamente mais tarde');
           this.router.navigate(['/']);
@@ -43,5 +48,9 @@ export class ListaProdutosComponent implements OnInit {
   handleProdutoSelecionado(produtoSelecionado: ProdutoDTO) {
     this.produtoContext.setProdutoSelecionado(produtoSelecionado);
     this.router.navigate(['/simulacao']);
+  }
+
+  onProdutosFiltrados(produtosFiltrados: ProdutoDTO[]) {
+    this.produtosExibidos = produtosFiltrados;
   }
 }

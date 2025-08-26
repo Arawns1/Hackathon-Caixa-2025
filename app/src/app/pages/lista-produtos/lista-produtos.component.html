@@ -18,9 +18,13 @@
   </div>
 
   <ng-template #listaProdutos>
+    <app-input-busca-produtos
+      [produtos]="produtos"
+      (produtosFiltrados)="onProdutosFiltrados($event)"
+    />
     <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" data-test-id="produtos-lista">
       <app-card-produto
-        *ngFor="let produto of produtos"
+        *ngFor="let produto of produtosExibidos"
         [produto]="produto"
         (onProdutoSelecionado)="handleProdutoSelecionado($event)"
         data-test-id="produto-item"

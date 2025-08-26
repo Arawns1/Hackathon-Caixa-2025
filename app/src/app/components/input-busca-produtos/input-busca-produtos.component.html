@@ -1,0 +1,33 @@
+<form class="relative w-full">
+  <input
+    type="text"
+    [(ngModel)]="termoBusca"
+    (ngModelChange)="onBuscaChange($event)"
+    name="busca"
+    maxlength="60"
+    placeholder="Busque por um produto, taxa ou prazo máximo"
+    aria-label="Campo de busca de produtos, taxa ou prazo máximo"
+    data-test-id="input-busca"
+    class="w-full h-14 border-2 border-input pl-12 pr-10 placeholder:text-placeholder focus:border-primary focus:outline-none rounded-md text-foreground overflow-hidden whitespace-nowrap overflow-ellipsis"
+    [ngClass]="{ 'pr-10': termoBusca }"
+  />
+
+  <div
+    class="absolute left-3 top-1/2 -translate-y-1/2 text-primary/80 dark:text-foreground pointer-events-none"
+  >
+    <mat-icon class="material-icons-outlined" style="font-size: 28px">search</mat-icon>
+  </div>
+
+  <button
+    *ngIf="termoBusca"
+    type="button"
+    aria-label="Limpar campo de busca"
+    data-test-id="botao-reset"
+    class="absolute right-3 top- -translate-y-1/2 text-gray-400 hover:text-gray-600 cursor-pointer"
+    (click)="limparBusca()"
+    (keydown.enter)="limparBusca()"
+    (keydown.space)="limparBusca()"
+  >
+    <mat-icon class="material-icons-outlined" style="font-size: 24px">close</mat-icon>
+  </button>
+</form>
