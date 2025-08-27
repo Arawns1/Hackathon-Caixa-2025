@@ -6,7 +6,7 @@ const Decimal = require("decimal.js");
 
 const app = express();
 const port = process.env.PORT || 3000;
-const host = process.env.RENDER_EXTERNAL_URL || "http://localhost:" + port;
+const host = "http://localhost:" + port;
 
 app.use(cors());
 app.use(express.json());
