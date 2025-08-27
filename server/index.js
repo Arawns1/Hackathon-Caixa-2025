@@ -78,7 +78,7 @@ app.post("/simulacoes", (req, res, next) => {
 
     // Calculo Price
     const valorSolicitado = new Decimal(valor_solicitado);
-    const taxaMensal = new Decimal(produto.taxa_anual).div(12).div(100);
+    const taxaMensal = new Decimal(produto.taxa_anual).div(12);
     const parcela = calcularParcelaPriceDecimal(
       valorSolicitado,
       taxaMensal,
