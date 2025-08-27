@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.4.3...v1.4.4) (2025-08-27)
+
+
+### Bug Fixes
+
+* Remove variável de ambiente não utilizada ([204408e](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/204408e0a734a87af189ce08816dc61413df154f))
+
 ## [1.4.3](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.4.2...v1.4.3) (2025-08-27)
 
 
