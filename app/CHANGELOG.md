@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.4.4...v1.4.5) (2025-08-27)
+
+
+### Bug Fixes
+
+* Correção valor da taxa mensal ([d954dc5](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/d954dc5022dfb240299624d7dc788e5b84b360c1))
+
 ## [1.4.4](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.4.3...v1.4.4) (2025-08-27)
 
 
