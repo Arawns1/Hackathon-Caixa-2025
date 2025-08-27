@@ -4,7 +4,9 @@
 
 > **Código também disponível em:** [https://github.com/Arawns1/Hackathon-Caixa-2025](https://github.com/Arawns1/Hackathon-Caixa-2025)
 
-> **Versão implantada em Produção:** [https://hackathon-caixa-2025.vercel.app/](https://hackathon-caixa-2025.vercel.app/)
+> **Frontend em Produção:** [https://hackathon.damico.cloud/](https://hackathon.damico.cloud/)
+
+> **API em Produção:** [https://hackathon-api.damico.cloud/](https://hackathon-api.damico.cloud/)
 
 ## 📋 Sumário
 
@@ -18,6 +20,7 @@
   - [🚀 Como Executar](#-como-executar)
     - [Pré-requisitos](#pré-requisitos)
     - [Instalação](#instalação)
+    - [Docker](#docker)
     - [Scripts de Inicialização](#scripts-de-inicialização)
       - [`npm run start` - Produção](#npm-run-start---produção)
       - [`npm run dev` - Desenvolvimento Local](#npm-run-dev---desenvolvimento-local)
@@ -34,7 +37,7 @@
 
 ## 🎯 Objetivo Principal
 
-Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos e compreendam claramente os valores e prazos mensais, Além disso foi implementado um fluxo de CI/CD que passa por análise do SonarQube, garantindo a qualidade do código e estando tudo certo é feito o deploy na Vercel de forma contínua e integrada.
+Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos e compreendam claramente os valores e prazos mensais, Além disso foi implementado um fluxo de CI/CD que passa por análise do SonarQube, garantindo a qualidade do código e estando tudo certo é feito o deploy na minha cloud de forma contínua e integrada.
 
 ## 📱 Funcionalidades
 
@@ -55,7 +58,7 @@ Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos
 - **Responsividade**: Design adaptável para todos os dispositivos
 - **Navegação por teclado**: Suporte completo para navegação sem mouse
 - **Screen readers**: Compatível com leitores de tela
-- **Padrão WCAG 2.1 do W3C**: O projeto conta com nota 8.3 de acordo com o site accessMonitor em acessibilidade. [Confira Aqui!](https://accessmonitor.acessibilidade.gov.pt/results/https%3A%2F%2Fhackathon-caixa-2025.vercel.app%2F)
+- **Padrão WCAG 2.1 do W3C**: O projeto conta com nota 8.3 de acordo com o site accessMonitor em acessibilidade. [Confira Aqui!](https://accessmonitor.acessibilidade.gov.pt/results/https%3A%2F%2Fhackathon.damico.cloud%2F)
 
 ## 📸 Visuais e Telas
 
@@ -65,7 +68,6 @@ Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos
 
 ![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Arawns1_Hackathon-Caixa-2025&metric=coverage)
 ![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=Arawns1_Hackathon-Caixa-2025&metric=alert_status)
-![Vercel](https://vercelbadge.vercel.app/api/arawns1/Hackathon-Caixa-2025)
 
 - Angular 19
 - Tailwind CSS
@@ -84,6 +86,7 @@ Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos
 
 - Node.js 18+
 - npm ou yarn
+- Docker e Docker Compose (opcional)
 
 ### Instalação
 
@@ -92,13 +95,41 @@ Permitir que usuários cadastrem produtos de empréstimo, simulem financiamentos
 npm install
 ```
 
+### Docker
+
+O projeto inclui configurações Docker para facilitar o desenvolvimento e deploy:
+
+```bash
+# Executar toda a aplicação (frontend + backend) com Docker
+docker-compose up -d
+
+# Executar apenas o backend
+docker-compose up server -d
+
+# Executar apenas o frontend
+docker-compose up app -d
+
+# Parar todos os serviços
+docker-compose down
+
+# Reconstruir imagens
+docker-compose build --no-cache
+```
+
+**Arquivos Docker incluídos:**
+
+- `app/Dockerfile` - Frontend Angular
+- `server/Dockerfile` - Backend Node.js
+- `compose.yaml` - Orquestração dos serviços
+- `nginx.conf` - Configuração do servidor web
+
 ### Scripts de Inicialização
 
 #### `npm run start` - Produção
 
 - Executa `ng serve --configuration production`
 - Usa configurações de produção (otimizações ativadas)
-- Conecta à API hospedada: `https://hackathon-caixa-2025.onrender.com`
+- Conecta à API hospedada: `https://hackathon-api.damico.cloud/`
 - **Recomendado para demonstração**
 
 #### `npm run dev` - Desenvolvimento Local
@@ -112,7 +143,7 @@ npm install
 
 #### 🚀 **Recomendado: Versão Deployada**
 
-Para uso imediato, acesse a versão em produção: [https://hackathon-caixa-2025.vercel.app/](https://hackathon-caixa-2025.vercel.app/)
+Para uso imediato, acesse a versão em produção: [https://hackathon.damico.cloud/](https://hackathon.damico.cloud/)
 
 #### 💻 **Desenvolvimento Local**
 
@@ -137,12 +168,13 @@ A aplicação estará disponível em: `http://localhost:4200`
 
 #### API
 
-- **Hospedada**: `https://hackathon-caixa-2025.onrender.com`
+- **Hospedada**: `https://hackathon-api.damico.cloud/`
 - **Local**: `http://localhost:3000`
 
 ### Deploy
 
-- **Vercel**: [https://hackathon-caixa-2025.vercel.app/](https://hackathon-caixa-2025.vercel.app/)
+- **Frontend**: [https://hackathon.damico.cloud/](https://hackathon.damico.cloud/)
+- **API**: [https://hackathon-api.damico.cloud/](https://hackathon-api.damico.cloud/)
 - **Local**: `http://localhost:4200`
 
 ### 🧪 Testes
