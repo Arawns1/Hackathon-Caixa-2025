@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.4.2...v1.4.3) (2025-08-27)
+
+
+### Bug Fixes
+
+* correção de posicionamento de ícone de apagar busca ([4ccf742](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/4ccf742c88bd93aa7a2d27320393cb71a3343709))
+
 ## [1.4.2](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.4.1...v1.4.2) (2025-08-26)
 
 
