@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.4.5...v1.4.6) (2025-08-27)
+
+
+### Bug Fixes
+
+* Altera scripts de inicialização e README.md ([3109257](https://github.com/Arawns1/Hackathon-Caixa-2025/commit/310925772fec7e4aeda65f6fdbc7750db7217b7d))
+
 ## [1.4.5](https://github.com/Arawns1/Hackathon-Caixa-2025/compare/v1.4.4...v1.4.5) (2025-08-27)
 
 
