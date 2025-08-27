@@ -3,8 +3,8 @@
   "version": "1.4.5",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --configuration production",
-    "dev": "ng serve --configuration development",
+    "start": "ng serve --configuration development",
+    "start:prod": "ng serve --configuration production",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false --browsers=ChromeHeadless",

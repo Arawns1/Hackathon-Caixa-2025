@@ -22,8 +22,8 @@
     - [Instalação](#instalação)
     - [Docker](#docker)
     - [Scripts de Inicialização](#scripts-de-inicialização)
-      - [`npm run start` - Produção](#npm-run-start---produção)
-      - [`npm run dev` - Desenvolvimento Local](#npm-run-dev---desenvolvimento-local)
+      - [`npm run start:prod` - Produção](#npm-run-startprod---produção)
+      - [`npm run start` - Desenvolvimento Local](#npm-run-start---desenvolvimento-local)
     - [Executar o Projeto](#executar-o-projeto)
       - [🚀 **Recomendado: Versão Deployada**](#-recomendado-versão-deployada)
       - [💻 **Desenvolvimento Local**](#-desenvolvimento-local)
@@ -125,14 +125,14 @@ docker-compose build --no-cache
 
 ### Scripts de Inicialização
 
-#### `npm run start` - Produção
+#### `npm run start:prod` - Produção
 
 - Executa `ng serve --configuration production`
 - Usa configurações de produção (otimizações ativadas)
-- Conecta à API hospedada: `https://hackathon-api.damico.cloud/`
+- É necessário alterar o valor da baseURL do environment para: `https://hackathon-api.damico.cloud/`
 - **Recomendado para demonstração**
 
-#### `npm run dev` - Desenvolvimento Local
+#### `npm run start` - Desenvolvimento Local
 
 - Executa `ng serve --configuration development`
 - Usa configurações de desenvolvimento (source maps, sem otimizações)
@@ -151,10 +151,10 @@ Para uso imediato, acesse a versão em produção: [https://hackathon.damico.clo
 
 ```bash
 # Primeira execução (produção)
-npm start
+npm start:prod
 
 # Desenvolvimento local
-npm run dev
+npm run start
 ```
 
 A aplicação estará disponível em: `http://localhost:4200`
